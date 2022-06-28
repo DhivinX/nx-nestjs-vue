@@ -1,0 +1,132 @@
+{
+  "yes": "Tak",
+  "no": "Nie",
+  "save": "Zapisz",
+  "add": "Dodaj",
+  "cancel": "Anuluj",
+  "saved_successfully": "Wprowadzone zmiany zostały zapisane.",
+  "routes": {
+    "login": "Logowanie",
+    "dashboard": "Dashboard",
+    "users": "Użytkownicy",
+    "user": "Użytkownik",
+    "settings": "Ustawienia",
+    "logout": "Wyloguj"
+  },
+  "validation": {
+    "field_required": "To pole jest wymagane!",
+    "string_min": "To pole musi zawierać minumum {min} znaków!",
+    "string_max": "To pole musi zawierać maksymalnie {max} znaków!",
+    "string_email": "To nie jest poprawny adres e-mail!",
+    "string_password_repeat": "Hasła muszą być identyczne!",
+    "string_matches": "Niepoprawny format!"
+  },
+  "roles": {
+    "user": "Użytkownik",
+    "admin": "Administrator"
+  },
+  "app": {
+    "name": "nx-vnts",
+    "connection_lost": "Połączenie z serwerem zostało zerwane. Łączenie..."
+  },
+  "menu": {
+    "main": {
+      "title": "Menu główne",
+      "caption": "Wszystkie podstawowe funkcje aplikacji"
+    },
+    "account": {
+      "title": "Konto",
+      "caption": "Wszystkie funkcje konta"
+    }
+  },
+  "account": {
+    "session_exp": "Sesja wygasła!",
+    "logout_success": "Wylogowano poprawnie!",
+    "logout_failed": "Wystąpił problem podczas wylogowywania!",
+    "logout_progress": "Wylogowywanie...",
+    "menu": {
+      "settings": "Ustawienia",
+      "logout": "Wyloguj"
+    }
+  },
+  "login": {
+    "welcome": {
+      "title": "Witaj!",
+      "description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptate nobis velit unde iusto obcaecati rem in rerum! Quod iusto corrupti quidem distinctio laboriosam, harum earum mollitia deleniti excepturi voluptatum sapiente?"
+    },
+    "form": {
+      "email": "E-mail",
+      "password": "Hasło",
+      "remember": "Zapamiętaj mnie",
+      "signin": "Zaloguj się",
+      "errors": {
+        "no_authorization": "Błędny e-mail lub hasło!"
+      }
+    }
+  },
+  "dashboard": {
+    "welcome": "Witaj ponownie, {name}!"
+  },
+  "users": {
+    "title": "Ustawienia użytkownika",
+    "email": "E-mail",
+    "form": {
+      "first_name": "Imię",
+      "last_name": "Nazwisko",
+      "position": "Stanowisko",
+      "role": "Rola",
+      "isActive": "Aktywny",
+      "password": "Hasło",
+      "errors": {
+        "default": "Wystąpił błąd!"
+      }
+    },
+    "create": {
+      "title": "Nowy użytkownik",
+      "email": "E-mail",
+      "first_name": "Imię",
+      "last_name": "Nazwisko",
+      "position": "Stanowisko",
+      "role": "Rola",
+      "password": "Hasło",
+      "errors": {
+        "default": "Wystąpił błąd!",
+        "user_exists": "Użytkownik o takim e-mailu już istnieje!"
+      }
+    },
+    "list": {
+      "first_and_last_name": "Imię i nazwisko",
+      "email": "E-mail",
+      "role": "Rola",
+      "created_at": "Utworzony",
+      "edit": "Edycja"
+    }
+  },
+  "settings": {
+    "general": {
+      "title": "Ogólne",
+      "role": "Rola",
+      "email": "E-mail",
+      "form": {
+        "first_name": "Imię",
+        "last_name": "Nazwisko",
+        "position": "Stanowisko",
+        "errors": {
+          "default": "Wystąpił błąd!"
+        }
+      }
+    },
+    "password": {
+      "title": "Zmiana hasła",
+      "form": {
+        "password": "Aktualne hasło",
+        "new_password": "Nowe hasło",
+        "repeat_password": "Powtórz nowe hasło",
+        "errors": {
+          "default": "Wystąpił błąd!",
+          "wrong_password": "Błędne hasło!"
+        }
+      }
+    }
+  }
+}

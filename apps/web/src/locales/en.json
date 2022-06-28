@@ -1,0 +1,132 @@
+{
+  "yes": "Yes",
+  "no": "No",
+  "save": "Save",
+  "add": "Add",
+  "cancel": "Cancel",
+  "saved_successfully": "The changes made have been saved.",
+  "routes": {
+    "login": "Sign in",
+    "dashboard": "Dashboard",
+    "users": "Users",
+    "user": "User",
+    "settings": "Settings",
+    "logout": "Sign out"
+  },
+  "validation": {
+    "field_required": "This field is required!",
+    "string_min": "This field must contain at least {min} characters!",
+    "string_max": "This field must contain a maximum of {max} characters!",
+    "string_email": "This is not a valid e-mail address!",
+    "string_password_repeat": "Passwords must match!",
+    "string_matches": "Invalid format!"
+  },
+  "roles": {
+    "user": "User",
+    "admin": "Administrator"
+  },
+  "app": {
+    "name": "nx-vnts",
+    "connection_lost": "The connection to the server has been lost. Connection..."
+  },
+  "menu": {
+    "main": {
+      "title": "Main menu",
+      "caption": "All the basic functions of the application"
+    },
+    "account": {
+      "title": "Account",
+      "caption": "All account features"
+    }
+  },
+  "account": {
+    "session_exp": "Session expired!", 
+    "login_success": "Signing out successfully!", 
+    "login_failed": "There was a problem logging out!", 
+    "logout_progress": "Signing out ...",
+    "menu": {
+      "settings": "Settings",
+      "logout": "Sign out"
+    }
+  },
+  "login": {
+    "welcome": {
+      "title": "Welcome!",
+      "description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptate nobis velit unde iusto obcaecati rem in rerum! Quod iusto corrupti quidem distinctio laboriosam, harum earum mollitia deleniti excepturi voluptatum sapiente?"
+    },
+    "form": {
+      "email": "E-mail",
+      "password": "Password",
+      "remember": "Remember me",
+      "signin": "Sign in",
+      "errors": {
+        "no_authorization": "Wrong e-mail or password!"
+      }
+    }
+  },
+  "dashboard": {
+    "welcome": "Welcome back, {name}!"
+  },
+  "users": {
+    "title": "User settings",
+    "email": "E-mail",
+    "form": {
+      "first_name": "Name",
+      "last_name": "Surname",
+      "position": "Position",
+      "role": "Role",
+      "isActive": "Active",
+      "password": "Password",
+      "errors": {
+        "default": "Error occured!"
+      }
+    },
+    "create": {
+      "title": "New user",
+      "email": "E-mail",
+      "first_name": "Name",
+      "last_name": "Surname",
+      "position": "Position",
+      "role": "Role",
+      "password": "Password",
+      "errors": {
+        "default": "An error has occurred!",
+        "user_exists": "User with this e-mail already exists!"
+      }
+    },
+    "list": {
+      "first_and_last_name": "Name and surname",
+      "email": "E-mail",
+      "roles": "Rola",
+      "created_at": "Created",
+      "edit": "Edit"
+    }
+  },
+  "settings": {
+    "general": {
+      "title": "General",
+      "role": "Role",
+      "email": "E-mail",
+      "form": {
+        "first_name": "Name",
+        "last_name": "Surname",
+        "position": "Position",
+        "errors": {
+          "default": "An error has occurred!"
+        }
+      }
+    },
+    "password": {
+      "title": "Change password",
+      "form": {
+        "password": "Current password",
+        "new_password": "New password",
+        "repeat_password": "Repeat new password",
+        "errors": {
+          "default": "An error has occurred!",
+          "wrong_password": "Wrong password!"
+        }
+      }
+    }
+  }
+}

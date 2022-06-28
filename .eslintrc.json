@@ -1,0 +1,92 @@
+{
+  "root": true,
+
+  "ignorePatterns": ["node_modules", "dist", "build", "components.d.ts"],
+
+  "overrides": [
+    {
+      "files": ["*.ts", ".tsx"],
+
+      "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:prettier/recommended"
+      ],
+
+      "env": {
+        "es6": true,
+        "browser": true,
+        "node": true
+      },
+
+      "plugins": [
+        "@typescript-eslint",
+        "prettier"
+      ],
+
+      "rules": {
+        "prettier/prettier": "warn",
+
+        "@typescript-eslint/interface-name-prefix": "off",
+        "@typescript-eslint/explicit-function-return-type": "off",
+        "@typescript-eslint/explicit-module-boundary-types": "off",
+        "@typescript-eslint/no-explicit-any": "off",
+        "@typescript-eslint/no-unsafe-call": "off",
+        "@typescript-eslint/no-unused-vars": "off",
+        "@typescript-eslint/no-floating-promises": "off",
+        "@typescript-eslint/require-await": "off",
+        "@typescript-eslint/no-unsafe-member-access": "off",
+
+        "semi": ["error", "always"],
+        "quotes": ["warn", "single", { "allowTemplateLiterals": true }]
+      }
+    },
+
+    {
+      "files": ["*.vue"],
+
+      "extends": [
+        "plugin:vue/vue3-essential",
+        "@vue/eslint-config-typescript/recommended",
+        "@vue/eslint-config-prettier"
+      ],
+
+      "plugins": [
+        "prettier"
+      ],
+
+      "env": {
+        "vue/setup-compiler-macros": true
+      },
+
+      "rules": {
+        "prettier/prettier": "warn",
+
+        "@typescript-eslint/interface-name-prefix": "off",
+        "@typescript-eslint/explicit-function-return-type": "off",
+        "@typescript-eslint/explicit-module-boundary-types": "off",
+        "@typescript-eslint/no-explicit-any": "off",
+        "@typescript-eslint/no-unsafe-call": "off",
+        "@typescript-eslint/no-unused-vars": "off",
+        "@typescript-eslint/no-floating-promises": "off",
+        "@typescript-eslint/require-await": "off",
+        "@typescript-eslint/no-unsafe-member-access": "off",
+
+        "semi": ["error", "always"],
+        "quotes": ["warn", "single", { "allowTemplateLiterals": true }]
+      }
+    },
+
+    {
+      "files": ["*.js"],
+
+      "parserOptions": {
+        "ecmaVersion": 2017
+      },
+
+      "env": {
+          "es6": true
+      }
+    }
+  ]
+}

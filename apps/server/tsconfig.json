@@ -1,0 +1,24 @@
+{
+  "extends": "../../tsconfig.base.json",
+
+  "compilerOptions": {
+    "baseUrl": ".",
+
+    "paths": {
+      "@/*": ["./src/*"],
+      "@nx-vnts/shared": ["../../libs/shared/src/index.ts"],
+      "@nx-vnts/utils": ["../../libs/utils/src/index.ts"]
+    }
+  },
+
+  "files": [],
+  "include": [],
+  "references": [
+    {
+      "path": "./tsconfig.app.json"
+    },
+    {
+      "path": "./tsconfig.spec.json"
+    }
+  ]
+}
