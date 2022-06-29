@@ -6,13 +6,11 @@ interface Config {
     };
 }
 
-const host = window.location.hostname;
-
 export const config: Config = {
     defaultLocale: 'en',
 
     api: {
-        host: `http://${host}`,
+        host: `http://localhost`,
         port: 3000,
     },
 };

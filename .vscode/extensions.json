@@ -1,18 +1,16 @@
 {
-  "recommendations": [
-    "nrwl.angular-console",
-    "vue.volar",
-    "dbaeumer.vscode-eslint",
-    "editorconfig.editorconfig",
-    "syler.sass-indented",
-    "eamodio.gitlens",
-    "donjayamanne.githistory",
-    "aaron-bond.better-comments",
-    "visualstudioexptteam.vscodeintellicode",
-    "pkief.material-icon-theme"
-  ],
-
-  "unwantedRecommendations": [
-    "octref.vetur"
-  ]
+    "recommendations": [
+        "nrwl.angular-console",
+        "vue.volar",
+        "dbaeumer.vscode-eslint",
+        "editorconfig.editorconfig",
+        "syler.sass-indented",
+        "eamodio.gitlens",
+        "donjayamanne.githistory",
+        "aaron-bond.better-comments",
+        "visualstudioexptteam.vscodeintellicode",
+        "pkief.material-icon-theme",
+        "firsttris.vscode-jest-runner"
+    ],
+    "unwantedRecommendations": ["octref.vetur"]
 }

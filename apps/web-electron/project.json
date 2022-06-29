@@ -1,0 +1,80 @@
+{
+    "$schema": "..\\..\\node_modules\\nx\\schemas\\project-schema.json",
+    "sourceRoot": "apps/web-electron/src",
+    "projectType": "application",
+    "targets": {
+      "serve": {
+        "executor": "nx:run-commands",
+        "options": {
+          "commands": [
+            "npx nx run web-electron:webpack-build",
+            "wait-on tcp:8080",
+            "electron dist/apps/web-electron"
+          ],
+          "parallel": false
+        }
+      },
+      "build": {
+        "executor": "nx:run-commands",
+        "options": {
+          "commands": [
+            "npx nx run web:build --configuration=electron",
+            "npx nx run web-electron:webpack-build --configuration=production",
+            "npx nx run web-electron:electron-build"
+          ],
+          "parallel": false
+        }
+      },
+      "electron-build": {
+        "executor": "nx:run-commands",
+        "options": {
+          "commands": [
+            "npm i",
+            "electron-builder"
+          ],
+          "parallel": false,
+          "cwd": "dist/apps/web-electron"
+        }
+      },
+      "webpack-build": {
+        "executor": "@nrwl/node:webpack",
+        "outputs": ["{options.outputPath}"],
+        "options": {
+            "outputPath": "dist/apps/web-electron",
+            "main": "apps/web-electron/src/main.ts",
+            "tsConfig": "apps/web-electron/tsconfig.app.json",
+            "assets": ["apps/web-electron/src/assets"],
+            "webpackConfig": "apps/web-electron/webpack.config.js"
+        },
+        "configurations": {
+          "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                  {
+                      "replace": "apps/web-electron/src/environments/environment.ts",
+                      "with": "apps/web-electron/src/environments/environment.prod.ts"
+                  }
+              ]
+          }
+        }
+      },
+      "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+              "lintFilePatterns": ["apps/web-electron/**/*.ts"]
+          }
+      },
+      "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/web-electron"],
+          "options": {
+              "jestConfig": "apps/web-electron/jest.config.ts",
+              "passWithNoTests": true
+          }
+      }
+    },
+    "tags": []
+}

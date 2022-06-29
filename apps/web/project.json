@@ -20,6 +20,15 @@
               "with": "apps/web/src/environments/environment.prod.ts"
             }
           ]
+        },
+        "electron": {
+          "baseHref": "./",
+          "fileReplacements": [
+            {
+              "replace": "apps/web/src/environments/environment.ts",
+              "with": "apps/web/src/environments/environment.prod.ts"
+            }
+          ]
         }
       }
     },
@@ -27,7 +36,7 @@
       "executor": "@nxext/vite:dev",
       "options": {
         "outputPath": "dist/apps/web",
-        "baseHref": "/",
+        "baseHref": "./",
         "configFile": "apps/web/vite.config.ts"
       },
       "configurations": {

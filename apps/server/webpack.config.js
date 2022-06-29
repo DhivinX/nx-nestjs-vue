@@ -1,4 +1,3 @@
-const path = require('path');
 const { merge } = require('webpack-merge');
 const nodeExternals = require('webpack-node-externals');
 const GeneratePackageJsonPlugin = require('generate-package-json-webpack-plugin');
