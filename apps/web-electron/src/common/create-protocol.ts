@@ -8,15 +8,10 @@ export function createProtocol(scheme: string) {
     protocol.registerBufferProtocol(scheme, (request, respond) => {
         let pathName: string = new URL(request.url).pathname;
 
-        log.info(request.url);
-        log.info(pathName);
-
         pathName = decodeURI(pathName);
 
-        log.info(pathName);
-
         readFile(path.join(__dirname, pathName), (error, data) => {
-            if (error) console.error(`Failed to read ${pathName} on ${scheme} protocol`, error);
+            if (error) log.error(`Failed to read ${pathName} on ${scheme} protocol`, error);
 
             const extension: string = path.extname(pathName).toLowerCase();
             let mimeType = '';
