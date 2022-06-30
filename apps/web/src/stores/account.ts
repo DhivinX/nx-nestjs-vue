@@ -6,6 +6,8 @@ import { useQuasar } from 'quasar';
 import { useI18n } from 'vue-i18n';
 import type { Role, UserProfileResponse } from '@nx-vnts/shared';
 import { usePromiseState, api } from '@/common';
+import { useStorage } from '@vueuse/core';
+import { isElectronApp } from '@/common/electron';
 
 interface State {
     authenticated: boolean;
@@ -26,6 +28,8 @@ interface State {
 
 export const useAccountStore = defineStore('account', () => {
     const cookies = useCookies(['token_exp']);
+    const storageTokenExp = useStorage('token_exp', -1);
+
     const router = useRouter();
     const $q = useQuasar();
     const { t } = useI18n();
@@ -81,13 +85,17 @@ export const useAccountStore = defineStore('account', () => {
 
     function checkAuthCookie(): void {
         if (state.authenticated) return;
-        const tokenExpiration = cookies.get<number>('token_exp');
 
-        if (tokenExpiration) {
+        const tokenExpiration = isElectronApp
+            ? storageTokenExp.value
+            : cookies.get<number>('token_exp');
+
+        if (tokenExpiration && tokenExpiration !== -1) {
             if (tokenExpiration - Date.now() > 0) {
                 setAuthenticated(true);
             } else {
-                cookies.remove('token_exp');
+                if (isElectronApp) storageTokenExp.value = -1;
+                else cookies.remove('token_exp');
 
                 $q.notify({
                     icon: 'mdi-cookie',
@@ -102,10 +110,16 @@ export const useAccountStore = defineStore('account', () => {
         state.authenticated = authState;
 
         if (authState) {
-            if (expirationTime !== undefined) cookies.set('token_exp', expirationTime);
+            if (expirationTime !== undefined) {
+                if (isElectronApp) storageTokenExp.value = expirationTime;
+                else cookies.set('token_exp', expirationTime);
+            }
         } else {
             reset();
-            cookies.remove('token_exp');
+
+            if (isElectronApp) storageTokenExp.value = -1;
+            else cookies.remove('token_exp');
+
             router.push({ name: 'login' });
         }
     }

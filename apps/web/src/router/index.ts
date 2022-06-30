@@ -1,3 +1,4 @@
+import { isElectronApp } from '@/common/electron';
 import { Role } from '@nx-vnts/shared';
 import { createRouter, createWebHistory, createWebHashHistory } from 'vue-router';
 import { AuthMeta, useAuthGuard } from './guards';
@@ -10,10 +11,8 @@ declare module 'vue-router' {
     }
 }
 
-console.log(import.meta.url);
-
 const router = createRouter({
-    history: import.meta.url.includes('app://')
+    history: isElectronApp
         ? createWebHashHistory(import.meta.env.BASE_URL)
         : createWebHistory(import.meta.env.BASE_URL),
     routes,

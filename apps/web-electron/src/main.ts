@@ -1,22 +1,23 @@
 import path from 'path';
 import { app, protocol, BrowserWindow } from 'electron';
 import { environment } from './environments/environment';
-import { createProtocol } from './common/create-protocol';
 
 protocol.registerSchemesAsPrivileged([
     {
         scheme: 'app',
         privileges: {
-            secure: true,
             standard: true,
+            secure: false,
+            allowServiceWorkers: true,
+            supportFetchAPI: true,
         },
     },
 ]);
 
 function createWindow() {
     const mainWindow = new BrowserWindow({
-        width: 1024,
-        height: 768,
+        width: 1200,
+        height: 800,
         webPreferences: {
             preload: path.join(__dirname, 'assets/preload.js'),
             nodeIntegration: true,
@@ -24,7 +25,6 @@ function createWindow() {
     });
 
     if (environment.production) {
-        createProtocol('app');
         mainWindow.loadURL('app://localhost/index.html');
     } else {
         mainWindow.loadURL('http://localhost:8080');
@@ -33,7 +33,15 @@ function createWindow() {
 }
 
 app.whenReady().then(() => {
+    protocol.registerFileProtocol('app', (request, callback) => {
+        const url = request.url.slice(16);
+        callback({
+            path: path.normalize(`${__dirname}/${url}`),
+        });
+    });
+
     createWindow();
+
     app.on('activate', function () {
         if (BrowserWindow.getAllWindows().length === 0) createWindow();
     });
