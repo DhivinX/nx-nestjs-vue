@@ -10,7 +10,7 @@ export enum AuthMeta {
 export function useAuthGuard(router: Router) {
     router.beforeEach(async (to) => {
         const accountStore = useAccountStore();
-        accountStore.checkAuthCookie();
+        accountStore.refreshAuthState();
 
         if (!accountStore.state.loaded && accountStore.state.authenticated)
             await accountStore.fetch(500);

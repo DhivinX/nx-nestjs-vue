@@ -150,11 +150,12 @@ const loginForm = reactive<AuthLoginDto>({
     email: '',
     password: '',
     remember: true,
+    cookies: true,
 });
 
 const loginAction = usePromiseState<void, ResponseError>(async () => {
     const res = await api.auth.login(loginForm);
-    accountStore.setAuthenticated(true, res.data.expirationTime);
+    accountStore.setAuthenticated(true, res.data);
     accountStore.load(res.data.account);
     await router.push({ name: 'dashboard' });
 });

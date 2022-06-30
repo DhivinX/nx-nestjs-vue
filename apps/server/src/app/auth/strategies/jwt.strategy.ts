@@ -8,15 +8,21 @@ export interface JwtPayload {
     id: string;
 }
 
-function cookieExtractor(req: any): null | string {
-    return req && req.cookies ? (req.cookies?.jwt as string) ?? null : null;
+function tokenExtractor(req: any): null | string {
+    const bearerToken =
+        req.headers.authorization && req.headers.authorization.includes('Bearer ')
+            ? req.headers.authorization.replace('Bearer ', '')
+            : null;
+
+    if (bearerToken) return bearerToken;
+    else return req && req.cookies ? (req.cookies?.jwt as string) ?? null : null;
 }
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy, 'jwt') {
     constructor(configService: ConfigService) {
         super({
-            jwtFromRequest: cookieExtractor,
+            jwtFromRequest: tokenExtractor,
             secretOrKey: configService.get<string>('keys.jwt'),
         });
     }

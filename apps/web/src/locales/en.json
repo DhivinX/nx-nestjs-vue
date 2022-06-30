@@ -97,7 +97,7 @@
     "list": {
       "first_and_last_name": "Name and surname",
       "email": "E-mail",
-      "roles": "Rola",
+      "role": "Rola",
       "created_at": "Created",
       "edit": "Edit"
     }

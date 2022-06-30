@@ -33,6 +33,11 @@ export class Session extends BaseEntity {
     exp: number;
 
     @Column({
+        default: false,
+    })
+    cookies: boolean;
+
+    @Column({
         default: () => 'CURRENT_TIMESTAMP',
     })
     lastSeen: Date;

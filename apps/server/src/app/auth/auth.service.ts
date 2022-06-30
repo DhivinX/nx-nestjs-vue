@@ -41,22 +41,31 @@ export class AuthService {
         if (authLoginDto.remember) maxAge = 365 * 24 * 60 * 60 * 1000;
 
         const expirationTime = Date.now() + maxAge;
-        const session = await this.generateSession(oldSession, user, expirationTime);
+
+        const session = await this.generateSession(
+            oldSession,
+            user,
+            expirationTime,
+            authLoginDto.cookies
+        );
+
         const signedToken = this.createToken(session.token);
 
-        const secure = this.configService.get<boolean>('http.secure');
+        if (authLoginDto.cookies) {
+            const secure = this.configService.get<boolean>('http.secure');
 
-        response.cookie('jwt', signedToken, {
-            secure: secure,
-            sameSite: secure ? 'none' : 'lax',
-            //domain: this.configService.get<string>('http.domain'),
-            httpOnly: true,
-            maxAge,
-        });
+            response.cookie('jwt', signedToken, {
+                secure: secure,
+                sameSite: secure ? 'none' : 'lax',
+                httpOnly: true,
+                maxAge,
+            });
+        }
 
-        const account = await this.usersService.getProfile(session.user);
+        const account = this.usersService.getProfile(session.user);
 
         return {
+            token: authLoginDto.cookies ? undefined : signedToken,
             expirationTime,
             account,
         };
@@ -70,7 +79,6 @@ export class AuthService {
         response.clearCookie('jwt', {
             secure: secure,
             sameSite: secure ? 'none' : 'lax',
-            //domain: this.configService.get<string>('http.domain'),
             httpOnly: true,
         });
 
@@ -93,7 +101,8 @@ export class AuthService {
     private async generateSession(
         session: Session,
         user: User,
-        expirationTime: number
+        expirationTime: number,
+        cookies: boolean
     ): Promise<Session> {
         let token: string;
         let sessionWithThisToken: Session | null = null;
@@ -110,11 +119,13 @@ export class AuthService {
         if (session) {
             session.token = token;
             session.exp = expirationTime;
+            session.cookies = cookies;
         } else {
             session = new Session();
             session.user = user;
             session.token = token;
             session.exp = expirationTime;
+            session.cookies = cookies;
         }
 
         await session.save();

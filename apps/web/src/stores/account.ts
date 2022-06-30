@@ -4,10 +4,10 @@ import { computed, reactive } from 'vue';
 import { useRouter } from 'vue-router';
 import { useQuasar } from 'quasar';
 import { useI18n } from 'vue-i18n';
-import type { Role, UserProfileResponse } from '@nx-vnts/shared';
+import type { AuthLoginResponse, Role, UserProfileResponse } from '@nx-vnts/shared';
 import { usePromiseState, api } from '@/common';
 import { useStorage } from '@vueuse/core';
-import { isElectronProtocol } from '@/common/electron';
+import { clearAuthorizationToken, setAuthorizationToken } from '@/common/api';
 
 interface State {
     authenticated: boolean;
@@ -27,8 +27,9 @@ interface State {
 }
 
 export const useAccountStore = defineStore('account', () => {
-    const cookies = useCookies(['token_exp']);
-    const storageTokenExp = useStorage('token_exp', -1);
+    const cookies = useCookies(['token', 'token_exp']);
+    const storageToken = useStorage<string>('token', null);
+    const storageTokenExp = useStorage<number>('token_exp', null);
 
     const router = useRouter();
     const $q = useQuasar();
@@ -83,19 +84,22 @@ export const useAccountStore = defineStore('account', () => {
         state.createdAt = new Date(data.createdAt);
     }
 
-    function checkAuthCookie(): void {
+    function refreshAuthState(): void {
         if (state.authenticated) return;
 
-        const tokenExpiration = isElectronProtocol
+        const tokenExpiration = storageToken.value
             ? storageTokenExp.value
             : cookies.get<number>('token_exp');
 
-        if (tokenExpiration && tokenExpiration !== -1) {
+        if (tokenExpiration) {
             if (tokenExpiration - Date.now() > 0) {
                 setAuthenticated(true);
             } else {
-                if (isElectronProtocol) storageTokenExp.value = -1;
-                else cookies.remove('token_exp');
+                cookies.remove('token_exp');
+                storageToken.value = null;
+                storageTokenExp.value = null;
+
+                clearAuthorizationToken();
 
                 $q.notify({
                     icon: 'mdi-cookie',
@@ -106,23 +110,32 @@ export const useAccountStore = defineStore('account', () => {
         }
     }
 
-    function setAuthenticated(authState: boolean, expirationTime?: number) {
+    function setAuthenticated(authState: boolean, loginResponse?: AuthLoginResponse) {
         state.authenticated = authState;
 
         if (authState) {
-            if (expirationTime !== undefined) {
-                if (isElectronProtocol) storageTokenExp.value = expirationTime;
-                else cookies.set('token_exp', expirationTime);
+            if (loginResponse) {
+                if (loginResponse.token) storageToken.value = loginResponse.token;
+
+                if (loginResponse.expirationTime !== undefined) {
+                    if (storageToken.value) storageTokenExp.value = loginResponse.expirationTime;
+                    else cookies.set('token_exp', loginResponse.expirationTime);
+                }
             }
+
+            if (storageToken.value) setAuthorizationToken(storageToken.value);
         } else {
             reset();
 
-            if (isElectronProtocol) storageTokenExp.value = -1;
-            else cookies.remove('token_exp');
+            cookies.remove('token_exp');
+            storageToken.value = null;
+            storageTokenExp.value = null;
+
+            clearAuthorizationToken();
 
             router.push({ name: 'login' });
         }
     }
 
-    return { state, checkAuthCookie, setAuthenticated, load, reset, fetch: accountAction.execute };
+    return { state, refreshAuthState, setAuthenticated, load, reset, fetch: accountAction.execute };
 });
