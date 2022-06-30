@@ -3,7 +3,7 @@
     "sourceRoot": "apps/web-electron/src",
     "projectType": "application",
     "targets": {
-      "serve": {
+      "dev": {
         "executor": "nx:run-commands",
         "options": {
           "commands": [
@@ -14,7 +14,7 @@
           "parallel": false
         }
       },
-      "build": {
+      "package": {
         "executor": "nx:run-commands",
         "options": {
           "commands": [

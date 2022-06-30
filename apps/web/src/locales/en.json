@@ -41,8 +41,8 @@
   },
   "account": {
     "session_exp": "Session expired!", 
-    "login_success": "Signing out successfully!", 
-    "login_failed": "There was a problem logging out!", 
+    "logout_success": "Signing out successfully!", 
+    "logout_failed": "There was a problem logging out!", 
     "logout_progress": "Signing out ...",
     "menu": {
       "settings": "Settings",

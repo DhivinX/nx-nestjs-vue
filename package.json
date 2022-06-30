@@ -9,8 +9,8 @@
     "web:dev": "nx serve web",
     "server:dev": "nx serve server",
     "build": "npm run clean && nx run-many --target=build --configuration=production --all",
-    "web-electron:serve": "nx serve web-electron",
-    "web-electron:build": "npm run clean && nx build web-electron",
+    "web-electron:serve": "nx dev web-electron",
+    "web-electron:build": "npm run clean && nx package web-electron",
     "seed": "node tools/scripts/server-seed.js",
     "clean": "rimraf dist",
     "lint": "nx run-many --target=lint --all"

@@ -14,7 +14,7 @@ const basePackage = {
         ]
     },
     "scripts": {
-        "binary": "npx pkg . && npx copyfiles \"assets/**/*\" \"bin\" && npx copyfiles \"python/**/*\" \"bin\" && npx copyfiles -u 2 \"../web/**/*\" \"bin/static\""
+        "binary": "npx pkg . && npx copyfiles \"assets/**/*\" \"bin\" && npx copyfiles -u 2 \"../web/**/*\" \"bin/static\""
     }
 }
 
