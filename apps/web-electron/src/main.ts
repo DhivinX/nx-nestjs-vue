@@ -1,5 +1,5 @@
 import path from 'path';
-import { app, protocol, BrowserWindow } from 'electron';
+import { app, protocol, BrowserWindow, ipcMain } from 'electron';
 import { environment } from './environments/environment';
 
 protocol.registerSchemesAsPrivileged([
@@ -30,6 +30,10 @@ function createWindow() {
         mainWindow.loadURL('http://localhost:8080');
         mainWindow.webContents.openDevTools();
     }
+
+    ipcMain.on('main', (event, args) => {
+        mainWindow.webContents.send('renderer', { test: true });
+    });
 }
 
 app.whenReady().then(() => {

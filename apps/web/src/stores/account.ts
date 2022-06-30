@@ -7,7 +7,7 @@ import { useI18n } from 'vue-i18n';
 import type { Role, UserProfileResponse } from '@nx-vnts/shared';
 import { usePromiseState, api } from '@/common';
 import { useStorage } from '@vueuse/core';
-import { isElectronApp } from '@/common/electron';
+import { isElectronProtocol } from '@/common/electron';
 
 interface State {
     authenticated: boolean;
@@ -86,7 +86,7 @@ export const useAccountStore = defineStore('account', () => {
     function checkAuthCookie(): void {
         if (state.authenticated) return;
 
-        const tokenExpiration = isElectronApp
+        const tokenExpiration = isElectronProtocol
             ? storageTokenExp.value
             : cookies.get<number>('token_exp');
 
@@ -94,7 +94,7 @@ export const useAccountStore = defineStore('account', () => {
             if (tokenExpiration - Date.now() > 0) {
                 setAuthenticated(true);
             } else {
-                if (isElectronApp) storageTokenExp.value = -1;
+                if (isElectronProtocol) storageTokenExp.value = -1;
                 else cookies.remove('token_exp');
 
                 $q.notify({
@@ -111,13 +111,13 @@ export const useAccountStore = defineStore('account', () => {
 
         if (authState) {
             if (expirationTime !== undefined) {
-                if (isElectronApp) storageTokenExp.value = expirationTime;
+                if (isElectronProtocol) storageTokenExp.value = expirationTime;
                 else cookies.set('token_exp', expirationTime);
             }
         } else {
             reset();
 
-            if (isElectronApp) storageTokenExp.value = -1;
+            if (isElectronProtocol) storageTokenExp.value = -1;
             else cookies.remove('token_exp');
 
             router.push({ name: 'login' });
