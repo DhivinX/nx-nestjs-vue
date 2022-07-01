@@ -5,10 +5,10 @@ import { Role } from '../../common';
 setLocale(yupLocale);
 
 export const userCreateSchema: SchemaOf<UserCreateDto> = object().shape({
-    email: string().required().email().lowercase(),
+    email: string().required().email().lowercase().trim(),
     password: string().required().min(6),
-    firstName: string().required(),
-    lastName: string().required(),
+    firstName: string().required().trim(),
+    lastName: string().required().trim(),
     role: mixed().optional().oneOf(Object.values(Role)),
 });
 
