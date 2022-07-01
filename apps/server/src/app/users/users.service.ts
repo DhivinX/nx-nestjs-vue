@@ -23,9 +23,9 @@ export class UsersService {
     constructor(private readonly configService: ConfigService) {}
 
     getProfile(user: User): UserProfileResponse {
-        const { id, email, firstName, lastName, position, role, isActive, createdAt } = user;
-        const avatar = this.getAvatar(email);
-        return { id, email, firstName, lastName, position, avatar, role, isActive, createdAt };
+        const { hash, sessions, ...restUser } = user;
+        const avatar = this.getAvatar(restUser.email);
+        return { ...restUser, avatar };
     }
 
     private updateProfile(user: User, userUpdateSelfDto: UserUpdateSelfDto): User {
