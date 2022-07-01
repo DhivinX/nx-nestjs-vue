@@ -74,9 +74,10 @@ export class UsersService {
     }
 
     async createOne(userCreateDto: UserCreateDto): Promise<UserProfileResponse> {
-        const findUser = await User.findOneBy({ email: userCreateDto.email });
+        const countSameEmailUser = await User.countBy({ email: userCreateDto.email });
 
-        if (findUser) throw new ConflictException('A user with this email address already exists');
+        if (countSameEmailUser > 0)
+            throw new ConflictException('A user with this email address already exists');
 
         const user: User = new User();
 
@@ -103,17 +104,11 @@ export class UsersService {
             },
         });
 
-        const users: UserProfileResponse[] = [];
-
-        for (const user of foundUsers) {
-            users.push(this.getProfile(user));
-        }
-
         return {
             page: paginationDto.page,
             pages: Math.ceil(total / paginationDto.take),
             total: total,
-            elements: users,
+            elements: foundUsers.map(this.getProfile.bind(this)),
         };
     }
 

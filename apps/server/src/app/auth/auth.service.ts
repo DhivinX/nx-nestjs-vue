@@ -90,11 +90,7 @@ export class AuthService {
             id: token,
         };
 
-        const accessToken: string = sign(
-            payload,
-            this.configService.get<string>('keys.jwt')
-        ) as string;
-
+        const accessToken: string = sign(payload, this.configService.get<string>('keys.jwt'));
         return accessToken;
     }
 
