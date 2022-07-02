@@ -1,4 +1,4 @@
-import { bool, number, object, SchemaOf, string } from 'yup';
+import { bool, object, SchemaOf, string } from 'yup';
 import { setLocale } from 'yup';
 import { UseSchema, yupLocale } from '@nx-vnts/utils';
 

@@ -71,9 +71,10 @@
           "options": {
           "commands": [
               {
-                  "command": "vue-tsc --noEmit -p apps/web/tsconfig.app.json"
+                  "command": "vue-tsc --noEmit -p tsconfig.json"
               }
-          ]
+          ],
+          "cwd": "apps/web"
       }
     }
   },

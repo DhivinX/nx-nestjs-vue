@@ -29,12 +29,12 @@ export default defineConfig({
 
     resolve: {
         alias: {
-            '@/': `${path.resolve(__dirname, './src')}/`,
+            '@/': `${resolve('./src')}/`,
             ...tsconfigBaseAliases('../..'),
         },
     },
 
-    publicDir: path.resolve(__dirname, './src/public'),
+    publicDir: resolve('./src/public'),
 
     plugins: [
         Vue({
@@ -44,11 +44,11 @@ export default defineConfig({
         }),
 
         vueI18n({
-            include: path.resolve(__dirname, './src/locales/**'),
+            include: resolve('./src/locales/**'),
         }),
 
         quasar({
-            sassVariables: path.resolve(__dirname, './src/assets/quasar.scss'),
+            sassVariables: resolve('./src/assets/quasar.scss'),
         }),
 
         Components({
