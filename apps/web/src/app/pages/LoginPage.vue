@@ -141,6 +141,7 @@ import { useRouter } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 import { watch } from 'vue';
 import { useAccountStore } from '@/stores/account';
+import { config } from '@/config';
 
 const accountStore = useAccountStore();
 const router = useRouter();
@@ -150,7 +151,7 @@ const loginForm = reactive<AuthLoginDto>({
     email: '',
     password: '',
     remember: true,
-    cookies: true,
+    cookies: config.useCookies,
 });
 
 const loginAction = usePromiseState<void, ResponseError>(async () => {
