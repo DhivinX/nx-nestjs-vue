@@ -3,6 +3,8 @@
 // Read more: https://github.com/vuejs/core/pull/3399
 import '@vue/runtime-core'
 
+export {}
+
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     AppAccountMenu: typeof import('./src/app/components/AppAccountMenu.vue')['default']
@@ -21,6 +23,5 @@ declare module '@vue/runtime-core' {
     VInput: typeof import('./src/app/components/form/VInput.vue')['default']
     VSelect: typeof import('./src/app/components/form/VSelect.vue')['default']
   }
-}
 
-export {}
+}

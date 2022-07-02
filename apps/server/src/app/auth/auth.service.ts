@@ -1,7 +1,7 @@
 import { AuthLoginDto, AuthLoginResponse } from '@nx-vnts/shared';
 import { ConfigService } from '@nestjs/config';
 import { Injectable, UnauthorizedException } from '@nestjs/common';
-import { Response } from 'express';
+import { Response, Request } from 'express';
 import { v4 as uuid } from 'uuid';
 import { sign } from 'jsonwebtoken';
 import { LessThan } from 'typeorm';
@@ -19,9 +19,10 @@ export class AuthService {
     ) {}
 
     async login(
+        request: Request,
+        response: Response,
         oldSession: Session,
-        authLoginDto: AuthLoginDto,
-        response: Response
+        authLoginDto: AuthLoginDto
     ): Promise<AuthLoginResponse> {
         const user = await User.findOne({
             where: {
@@ -52,7 +53,9 @@ export class AuthService {
         const signedToken = this.createToken(session.token);
 
         if (authLoginDto.cookies) {
-            const secure = this.configService.get<boolean>('http.secure');
+            const secure =
+                this.configService.get<boolean>('http.secure') ||
+                request.header('X-Forwarded-Proto') === 'https';
 
             response.cookie('jwt', signedToken, {
                 secure: secure,
@@ -71,10 +74,12 @@ export class AuthService {
         };
     }
 
-    async logout(session: Session, response: Response): Promise<boolean> {
+    async logout(request: Request, response: Response, session: Session): Promise<boolean> {
         await session.remove();
 
-        const secure = this.configService.get<boolean>('http.secure');
+        const secure =
+            this.configService.get<boolean>('http.secure') ||
+            request.header('X-Forwarded-Proto') === 'https';
 
         response.clearCookie('jwt', {
             secure: secure,

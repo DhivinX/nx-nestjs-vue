@@ -65,7 +65,7 @@ async function bootstrap() {
         http.createServer(server).listen(configService.get<number>('http.port'));
 
         logger.log(
-            `🚀 The server was started in \x1b[31mHTTP\x1b[32m mode on port \x1b[36m${port}`
+            `🚀 The server was started in \x1b[35mHTTP\x1b[32m mode on port \x1b[36m${port}`
         );
     }
 }
