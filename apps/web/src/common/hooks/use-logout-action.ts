@@ -6,7 +6,8 @@ import { useRouter } from 'vue-router';
 import { api } from '../api';
 import { usePromiseState, UsePromiseStateRetrun } from './use-promise-state';
 
-export interface UseLogoutActionReturn<T, W> extends UsePromiseStateRetrun<T, W> {
+export interface UseLogoutActionReturn<TResult, TError>
+    extends UsePromiseStateRetrun<TResult, TError> {
     logout: () => void;
 }
 
