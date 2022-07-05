@@ -4,9 +4,13 @@ import { reactive } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useRouter } from 'vue-router';
 import { api } from '../api';
-import { usePromiseState } from './use-promise-state';
+import { usePromiseState, UsePromiseStateRetrun } from './use-promise-state';
 
-export function useLogoutAction() {
+export interface UseLogoutActionReturn<T, W> extends UsePromiseStateRetrun<T, W> {
+    logout: () => void;
+}
+
+export function useLogoutAction(): UseLogoutActionReturn<void, unknown> {
     const router = useRouter();
     const $q = useQuasar();
     const { t } = useI18n();
@@ -15,7 +19,7 @@ export function useLogoutAction() {
 
     let dialog: DialogChainObject | undefined = undefined;
 
-    function showLogoutDialog() {
+    function showLogoutDialog(): void {
         dialog = $q.dialog({
             message: t('account.logout_progress'),
             progress: true,
@@ -25,11 +29,11 @@ export function useLogoutAction() {
         });
     }
 
-    function hideLogoutDialog() {
+    function hideLogoutDialog(): void {
         if (dialog) dialog.hide();
     }
 
-    const logoutAction = usePromiseState(
+    const logoutAction = usePromiseState<void, unknown>(
         async () => {
             await api.auth.logout();
             accountStore.setAuthenticated(false);
@@ -56,7 +60,7 @@ export function useLogoutAction() {
         }
     );
 
-    function logout() {
+    function logout(): void {
         showLogoutDialog();
         logoutAction.execute(500);
     }

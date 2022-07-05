@@ -1,11 +1,23 @@
 import { timeout } from '@nx-vnts/utils';
 import { reactive, ref, shallowRef } from 'vue';
-import { createEventHook } from '@vueuse/core';
+import { createEventHook, EventHookOn } from '@vueuse/core';
+
+export interface UsePromiseStateRetrun<T, W> {
+    isReady: boolean;
+    isLoading: boolean;
+    counter: number;
+    startTime: number;
+    endTime: number;
+    state: T;
+    error: W;
+    onError: EventHookOn<W>;
+    execute: (delay?: number, payload?: any) => Promise<T>;
+}
 
 export function usePromiseState<T, W = unknown>(
     promise: (payload?: any) => Promise<T>,
     onError?: (e: W) => void
-) {
+): UsePromiseStateRetrun<T, W> {
     const isReady = ref<boolean>(false);
     const isLoading = ref<boolean>(false);
     const counter = ref<number>(0);
@@ -18,7 +30,7 @@ export function usePromiseState<T, W = unknown>(
     const errorEvent = createEventHook<W>();
     if (onError) errorEvent.on(onError);
 
-    async function execute(delay?: number, payload?: any) {
+    async function execute(delay?: number, payload?: any): Promise<T> {
         isReady.value = false;
         isLoading.value = true;
         startTime.value = Date.now();
