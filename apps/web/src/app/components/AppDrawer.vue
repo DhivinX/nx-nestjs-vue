@@ -147,7 +147,7 @@
 
 <script setup lang="ts">
 import { useAccountStore } from '@/stores/account';
-import { useLogoutAction } from '@/common/hooks/use-logout-action';
+import { useLogoutAction } from '@/common/hooks';
 import { useI18n } from 'vue-i18n';
 import { useRoute, useRouter } from 'vue-router';
 
