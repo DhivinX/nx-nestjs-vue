@@ -148,7 +148,7 @@
 
 <script setup lang="ts">
 import { Form } from 'vee-validate';
-import { api, usePromiseState, type ResponseError } from '@/common';
+import { api, usePromiseState, ResponseError } from '@/common';
 import { Role, UserProfileResponse, UserUpdateDto, userUpdateSchema } from '@nx-vnts/shared';
 import { computed, ref, reactive, watch } from 'vue';
 import { useRoute } from 'vue-router';

@@ -135,8 +135,8 @@
 <script setup lang="ts">
 import { computed, reactive } from 'vue';
 import { Form } from 'vee-validate';
-import { usePromiseState, api, type ResponseError } from '@/common';
-import { type AuthLoginDto, authLoginSchema } from '@nx-vnts/shared';
+import { usePromiseState, api, ResponseError } from '@/common';
+import { AuthLoginDto, authLoginSchema } from '@nx-vnts/shared';
 import { useRouter } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 import { watch } from 'vue';

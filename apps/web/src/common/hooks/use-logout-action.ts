@@ -1,5 +1,5 @@
 import { useAccountStore } from '@/stores/account';
-import { useQuasar, type DialogChainObject } from 'quasar';
+import { useQuasar, DialogChainObject } from 'quasar';
 import { reactive } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useRouter } from 'vue-router';

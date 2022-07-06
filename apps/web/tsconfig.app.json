@@ -7,14 +7,5 @@
     "composite": true
   },
 
-  "exclude": ["**/*.spec.js", "**/*.spec.jsx", "**/*.spec.ts", "**/*.spec.tsx"],
-
-  "include": [
-    "**/*.js",
-    "**/*.jsx",
-    "**/*.ts",
-    "**/*.tsx",
-    "**/*.vue",
-    "**/*.json"
-  ]
+  "include": ["vite.config.*", "vitest.config.*", "cypress.config.*"]
 }

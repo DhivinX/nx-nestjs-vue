@@ -5,6 +5,7 @@ import Vue from '@vitejs/plugin-vue';
 import Components from 'unplugin-vue-components/vite';
 import { quasar, transformAssetUrls } from '@quasar/vite-plugin';
 import vueI18n from '@intlify/vite-plugin-vue-i18n';
+import checker from 'vite-plugin-checker';
 
 const resolve = (p: string) => path.resolve(__dirname, p);
 
@@ -40,6 +41,12 @@ export default defineConfig({
         Vue({
             template: {
                 transformAssetUrls,
+            },
+        }),
+
+        checker({
+            vueTsc: {
+                tsconfigPath: resolve('./tsconfig.json'),
             },
         }),
 

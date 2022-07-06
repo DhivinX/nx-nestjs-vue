@@ -212,14 +212,14 @@
 
 <script setup lang="ts">
 import { Form } from 'vee-validate';
-import { usePromiseState, api, type ResponseError } from '@/common';
+import { usePromiseState, api, ResponseError } from '@/common';
 import { ref, reactive, computed, watch } from 'vue';
 import { useAccountStore } from '@/stores/account';
 import { useI18n } from 'vue-i18n';
 import { useQuasar } from 'quasar';
 import {
-    type UserUpdateSelfDto,
-    type UserUpdateSelfPasswordDto,
+    UserUpdateSelfDto,
+    UserUpdateSelfPasswordDto,
     userUpdateSelfSchema,
     userUpdateSelfPasswordSchema,
 } from '@nx-vnts/shared';

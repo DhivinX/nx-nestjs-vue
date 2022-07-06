@@ -85,8 +85,8 @@
 </template>
 
 <script setup lang="ts">
-import { api, usePromiseState, type ResponseError } from '@/common';
-import type { PaginationDto, PaginationResponse, UserProfileResponse } from '@nx-vnts/shared';
+import { api, usePromiseState, ResponseError } from '@/common';
+import { PaginationDto, PaginationResponse, UserProfileResponse } from '@nx-vnts/shared';
 import { reactive, watch } from 'vue';
 import { useAccountStore } from '@/stores/account';
 import { useQuasar } from 'quasar';

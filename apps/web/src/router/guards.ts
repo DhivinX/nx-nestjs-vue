@@ -1,4 +1,4 @@
-import type { Router } from 'vue-router';
+import { Router } from 'vue-router';
 import { useAccountStore } from '@/stores/account';
 
 export enum AuthMeta {

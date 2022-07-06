@@ -1,4 +1,4 @@
-import type { RouteRecordRaw } from 'vue-router';
+import { RouteRecordRaw } from 'vue-router';
 import { AuthMeta } from './guards';
 import { Role } from '@nx-vnts/shared';
 

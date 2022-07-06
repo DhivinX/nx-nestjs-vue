@@ -116,10 +116,10 @@
 
 <script setup lang="ts">
 import { Form } from 'vee-validate';
-import { Role, type UserCreateDto, userCreateSchema } from '@nx-vnts/shared';
+import { Role, UserCreateDto, userCreateSchema } from '@nx-vnts/shared';
 import { useI18n } from 'vue-i18n';
 import { computed, reactive, ref, watch } from 'vue';
-import { api, usePromiseState, type ResponseError } from '@/common';
+import { api, usePromiseState, ResponseError } from '@/common';
 import { useQuasar } from 'quasar';
 
 const $q = useQuasar();

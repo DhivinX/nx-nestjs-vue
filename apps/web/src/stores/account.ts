@@ -4,7 +4,7 @@ import { computed, reactive } from 'vue';
 import { useRouter } from 'vue-router';
 import { useQuasar } from 'quasar';
 import { useI18n } from 'vue-i18n';
-import type { AuthLoginResponse, Role, UserProfileResponse } from '@nx-vnts/shared';
+import { AuthLoginResponse, Role, UserProfileResponse } from '@nx-vnts/shared';
 import { usePromiseState, api } from '@/common';
 import { useStorage } from '@vueuse/core';
 import { clearAuthorizationToken, setAuthorizationToken } from '@/common/api';

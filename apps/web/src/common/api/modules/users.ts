@@ -1,4 +1,4 @@
-import type {
+import {
     PaginationDto,
     PaginationResponse,
     UserCreateDto,

@@ -1,7 +1,7 @@
-import type { AxiosResponse } from 'axios';
+import { AxiosResponse } from 'axios';
 import { timeout } from '@nx-vnts/utils';
 import { $axios } from './client';
-import type { ResponseError } from './response-error';
+import { ResponseError } from './response-error';
 
 type ResponseSuccessCallback = (response: AxiosResponse) => void;
 type ResponseErrorCallback = (error: ResponseError) => void;
