@@ -45,9 +45,7 @@ export default defineConfig({
         }),
 
         checker({
-            vueTsc: {
-                tsconfigPath: resolve('./tsconfig.json'),
-            },
+            vueTsc: true,
         }),
 
         vueI18n({

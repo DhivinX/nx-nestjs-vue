@@ -6,12 +6,12 @@ import { useRouter } from 'vue-router';
 import { api } from '../api';
 import { usePromiseState, UsePromiseStateRetrun } from './use-promise-state';
 
-export interface UseLogoutActionReturn<TResult, TError>
-    extends UsePromiseStateRetrun<TResult, TError> {
+export interface UseLogoutActionReturn<TResult, TError, TPayload>
+    extends UsePromiseStateRetrun<TResult, TError, TPayload> {
     logout: () => void;
 }
 
-export function useLogoutAction(): UseLogoutActionReturn<void, unknown> {
+export function useLogoutAction(): UseLogoutActionReturn<void, unknown, undefined> {
     const router = useRouter();
     const $q = useQuasar();
     const { t } = useI18n();
