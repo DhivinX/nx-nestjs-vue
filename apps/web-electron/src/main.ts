@@ -31,7 +31,7 @@ function createWindow() {
         mainWindow.webContents.openDevTools();
     }
 
-    ipcMain.on('main', (event, args) => {
+    ipcMain.on('main', () => {
         mainWindow.webContents.send('renderer', { test: true });
     });
 }

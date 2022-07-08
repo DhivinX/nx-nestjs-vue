@@ -11,7 +11,7 @@ export class JwtAuthGuard extends AuthGuard('jwt') {
         });
     }
 
-    handleRequest(err, userSession, info, context) {
+    handleRequest(err, userSession, _info, context) {
         const isPublic = this.reflector.getAllAndOverride<boolean>(IS_PUBLIC_KEY, [
             context.getHandler(),
             context.getClass(),
