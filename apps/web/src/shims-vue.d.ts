@@ -10,6 +10,6 @@ declare module '*.vue' {
 declare module '@intlify/vite-plugin-vue-i18n/messages' {
     import { LocaleMessages } from '@intlify/core-base';
     import { VueMessageType } from 'vue-i18n';
-    const messages: LocaleMessages<VueMessageType>;
+    const messages: { [x: string]: LocaleMessage<VueMessageType> };
     export default messages;
 }
