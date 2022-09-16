@@ -6,7 +6,7 @@
         v-if="appStore.state.networkError"
     >
         <q-spinner-radio color="white" size="24px" class="q-mr-sm" />
-        {{ $t('app.connection_lost') }}
+        {{ $t('app_connection_lost') }}
     </q-banner>
 </template>
 
