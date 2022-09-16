@@ -172,7 +172,7 @@ function userCreateDialog(): void {
     $q.dialog({
         component: UserCreateDialog,
     }).onOk(() => {
-        usersAction.execute(500);
+        usersAction.execute(500, pagination.value);
     });
 }
 </script>
