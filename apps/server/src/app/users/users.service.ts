@@ -95,14 +95,43 @@ export class UsersService {
     }
 
     async getMany(paginationDto: PaginationDto): Promise<PaginationResponse<UserProfileResponse>> {
-        const [foundUsers, total] = await User.findAndCount({
-            take: paginationDto.take,
-            skip: (paginationDto.page - 1) * paginationDto.take,
-            order: {
-                role: 'DESC',
-                firstName: 'ASC',
-            },
-        });
+        const queryBuilder = User.createQueryBuilder('users');
+
+        if (paginationDto.filter)
+            queryBuilder.where(
+                `LOWER(CONCAT(users.firstName, ' ', users.lastName, ' ', users.email)) LIKE :filter`,
+                {
+                    filter: `%${paginationDto.filter.toLowerCase()}%`,
+                }
+            );
+
+        queryBuilder.take(paginationDto.take).skip((paginationDto.page - 1) * paginationDto.take);
+
+        switch (paginationDto.sortBy) {
+            case 'name':
+                queryBuilder.addOrderBy(
+                    'users.firstName',
+                    paginationDto.descending ? 'DESC' : 'ASC'
+                );
+                queryBuilder.addOrderBy(
+                    'users.lastName',
+                    paginationDto.descending ? 'DESC' : 'ASC'
+                );
+                break;
+            case 'role':
+                queryBuilder.addOrderBy('users.role', paginationDto.descending ? 'DESC' : 'ASC');
+                break;
+            case 'createdAt':
+                queryBuilder.addOrderBy(
+                    'users.createdAt',
+                    paginationDto.descending ? 'DESC' : 'ASC'
+                );
+                break;
+            default:
+                queryBuilder.addOrderBy('users.role', 'ASC');
+        }
+
+        const [foundUsers, total] = await queryBuilder.getManyAndCount();
 
         return {
             page: paginationDto.page,
