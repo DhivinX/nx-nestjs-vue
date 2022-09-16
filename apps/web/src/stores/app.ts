@@ -17,14 +17,14 @@ export const useAppStore = defineStore('app', () => {
 
     const state: State = reactive({
         networkError: false,
-        routeTitle: t(`app.name`),
+        routeTitle: t(`app_name`),
     });
 
     watch(
         () => route.name,
         () => {
-            title.value = t(`routes.${route.name.toString()}`) + ' - ' + t(`app.name`);
-            state.routeTitle = t(`routes.${route.name.toString()}`);
+            title.value = t(`routes_${route.name.toString()}`) + ' - ' + t(`app_name`);
+            state.routeTitle = t(`routes_${route.name.toString()}`);
         }
     );
 

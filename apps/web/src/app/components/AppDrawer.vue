@@ -1,7 +1,7 @@
 <template>
     <q-drawer show-if-above side="left" class="app-drawer">
         <q-scroll-area class="fit">
-            <div class="logo-area">{{ $t('app.name') }}</div>
+            <div class="logo-area">{{ $t('app_name') }}</div>
 
             <div class="account-area">
                 <div class="text-center">
@@ -16,8 +16,8 @@
 
             <q-list padding>
                 <div class="menu-title">
-                    <div class="title">{{ $t('menu.main.title') }}</div>
-                    <div class="caption">{{ $t('menu.main.caption') }}</div>
+                    <div class="title">{{ $t('menu_main_title') }}</div>
+                    <div class="caption">{{ $t('menu_main_caption') }}</div>
                 </div>
 
                 <q-item
@@ -49,8 +49,8 @@
 
             <q-list padding>
                 <div class="menu-title">
-                    <div class="title">{{ $t('menu.account.title') }}</div>
-                    <div class="caption">{{ $t('menu.account.caption') }}</div>
+                    <div class="title">{{ $t('menu_account_title') }}</div>
+                    <div class="caption">{{ $t('menu_account_caption') }}</div>
                 </div>
 
                 <q-item
@@ -158,7 +158,7 @@ const route = useRoute();
 const { t } = useI18n();
 
 function routeTitle(name: string): string {
-    return t(`routes.${name}`);
+    return t(`routes_${name}`);
 }
 
 function userHasPermission(routeName: string): boolean {

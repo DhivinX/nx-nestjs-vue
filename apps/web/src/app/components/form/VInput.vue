@@ -37,8 +37,8 @@ const fieldError = computed<string | undefined>(() => {
     const error: any = errorMessage.value;
 
     if (error && !props.untranslatable) {
-        if (error.k) return t(`validation.${error.k}`, error.v);
-        else return t(`validation.${error}`);
+        if (error.k) return t(`validation_${error.k}`, error.v);
+        else return t(`validation_${error}`);
     }
 
     return error;

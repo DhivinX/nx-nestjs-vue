@@ -37,7 +37,7 @@ onResponseError((e) => {
             if (accountStore.state.authenticated) {
                 $q.notify({
                     icon: 'mdi-cookie',
-                    message: t('account.session_exp'),
+                    message: t('account_session_exp'),
                     timeout: 2000,
                 });
             }

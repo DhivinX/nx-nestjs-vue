@@ -56,7 +56,7 @@ export const useAccountStore = defineStore('account', () => {
         }),
 
         roleName: computed(() => {
-            if (state.role) return t(`roles.${state.role}`);
+            if (state.role) return t(`roles_${state.role}`);
             else return null;
         }),
     });
@@ -103,7 +103,7 @@ export const useAccountStore = defineStore('account', () => {
 
                 $q.notify({
                     icon: 'mdi-cookie',
-                    message: t('account.session_exp'),
+                    message: t('account_session_exp'),
                     timeout: 2000,
                 });
             }

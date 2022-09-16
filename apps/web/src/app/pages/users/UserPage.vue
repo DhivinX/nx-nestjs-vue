@@ -13,7 +13,7 @@
                         :initial-values="form"
                     >
                         <q-card-section class="card-title">
-                            {{ $t('users.title') }}
+                            {{ $t('users_title') }}
                         </q-card-section>
 
                         <q-card-section class="row q-col-gutter-md">
@@ -21,7 +21,7 @@
                                 class="col-12 col-lg-6"
                                 name="email"
                                 :modelValue="userAction.state.email"
-                                :label="$t('users.email')"
+                                :label="$t('users_email')"
                                 outlined
                                 readonly
                             >
@@ -35,7 +35,7 @@
                                 name="role"
                                 v-model="form.role"
                                 :disable="saveAction.isLoading"
-                                :label="$t('users.form.role')"
+                                :label="$t('users_form_role')"
                                 :options="rolesSelectionTable"
                                 outlined
                                 emit-value
@@ -51,7 +51,7 @@
                                 name="isActive"
                                 v-model="form.isActive"
                                 :disable="saveAction.isLoading"
-                                :label="$t('users.form.isActive')"
+                                :label="$t('users_form_isActive')"
                                 :options="booleanSelectionTable"
                                 outlined
                                 emit-value
@@ -68,7 +68,7 @@
                                 name="firstName"
                                 v-model="form.firstName"
                                 :disable="saveAction.isLoading"
-                                :label="$t('users.form.first_name')"
+                                :label="$t('users_form_first_name')"
                                 outlined
                             >
                                 <template v-slot:prepend>
@@ -81,7 +81,7 @@
                                 name="lastName"
                                 v-model="form.lastName"
                                 :disable="saveAction.isLoading"
-                                :label="$t('users.form.last_name')"
+                                :label="$t('users_form_last_name')"
                                 outlined
                             >
                                 <template v-slot:prepend>
@@ -94,7 +94,7 @@
                                 name="position"
                                 v-model="form.position"
                                 :disable="saveAction.isLoading"
-                                :label="$t('users.form.position')"
+                                :label="$t('users_form_position')"
                                 outlined
                             >
                                 <template v-slot:prepend>
@@ -108,7 +108,7 @@
                                 :type="isPasswordVisible ? 'text' : 'password'"
                                 v-model="form.password"
                                 :disable="saveAction.isLoading"
-                                :label="$t('users.form.password')"
+                                :label="$t('users_form_password')"
                                 outlined
                             >
                                 <template v-slot:prepend>
@@ -162,7 +162,7 @@ const route = useRoute();
 const isPasswordVisible = ref(false);
 
 const rolesSelectionTable = Object.values(Role).map((role) => ({
-    label: t(`roles.${role}`),
+    label: t(`roles_${role}`),
     value: role,
 }));
 const booleanSelectionTable = [
@@ -209,7 +209,7 @@ const saveAction = usePromiseState<void, ResponseError>(async () => {
 });
 
 const saveError = computed<string>(() => {
-    if (saveAction.error) return t('users.form.errors.default');
+    if (saveAction.error) return t('users_form_errors_default');
 
     return undefined;
 });

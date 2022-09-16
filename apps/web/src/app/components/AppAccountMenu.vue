@@ -24,7 +24,7 @@
                     </q-item-section>
 
                     <q-item-section>
-                        {{ $t('account.menu.settings') }}
+                        {{ $t('account_menu_settings') }}
                     </q-item-section>
                 </q-item>
                 <q-item clickable v-close-popup @click="logoutAction.logout()">
@@ -33,7 +33,7 @@
                     </q-item-section>
 
                     <q-item-section>
-                        {{ $t('account.menu.logout') }}
+                        {{ $t('account_menu_logout') }}
                     </q-item-section>
                 </q-item>
             </q-list>

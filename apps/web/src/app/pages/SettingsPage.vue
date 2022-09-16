@@ -1,7 +1,7 @@
 <template>
     <AppPage>
         <template v-slot:header>
-            <AppPageHeader :title="$t('routes.settings')" icon="mdi-cog" />
+            <AppPageHeader :title="$t('routes_settings')" icon="mdi-cog" />
         </template>
 
         <div class="row q-col-gutter-lg">
@@ -13,7 +13,7 @@
                         :initial-values="generalForm"
                     >
                         <q-card-section class="card-title">
-                            {{ $t('settings.general.title') }}
+                            {{ $t('settings_general_title') }}
                         </q-card-section>
 
                         <q-card-section>
@@ -22,7 +22,7 @@
                                     class="col-12"
                                     name="email"
                                     :modelValue="accountStore.state.email"
-                                    :label="$t('settings.general.email')"
+                                    :label="$t('settings_general_email')"
                                     outlined
                                     readonly
                                 >
@@ -36,7 +36,7 @@
                                     name="firstName"
                                     v-model="generalForm.firstName"
                                     :disable="saveGeneralAction.isLoading"
-                                    :label="$t('settings.general.form.first_name')"
+                                    :label="$t('settings_general_form_first_name')"
                                     outlined
                                 >
                                     <template v-slot:prepend>
@@ -49,7 +49,7 @@
                                     name="lastName"
                                     v-model="generalForm.lastName"
                                     :disable="saveGeneralAction.isLoading"
-                                    :label="$t('settings.general.form.last_name')"
+                                    :label="$t('settings_general_form_last_name')"
                                     outlined
                                 >
                                     <template v-slot:prepend>
@@ -60,8 +60,8 @@
                                 <VInput
                                     class="col-12 col-md-6"
                                     name="role"
-                                    :modelValue="$t('roles.' + accountStore.state.role)"
-                                    :label="$t('settings.general.role')"
+                                    :modelValue="$t(`roles_${accountStore.state.role}`)"
+                                    :label="$t('settings_general_role')"
                                     outlined
                                     readonly
                                 >
@@ -75,7 +75,7 @@
                                     name="position"
                                     v-model="generalForm.position"
                                     :disable="saveGeneralAction.isLoading"
-                                    :label="$t('settings.general.form.position')"
+                                    :label="$t('settings_general_form_position')"
                                     outlined
                                 >
                                     <template v-slot:prepend>
@@ -114,7 +114,7 @@
                         :initial-values="passwordForm"
                     >
                         <q-card-section class="card-title">
-                            {{ $t('settings.password.title') }}
+                            {{ $t('settings_password_title') }}
                         </q-card-section>
 
                         <q-card-section>
@@ -126,7 +126,7 @@
                                     v-model="passwordForm.password"
                                     :disable="savePasswordAction.isLoading"
                                     :error="isWrongPasswordError"
-                                    :label="$t('settings.password.form.password')"
+                                    :label="$t('settings_password_form_password')"
                                     outlined
                                 >
                                     <template v-slot:prepend>
@@ -146,7 +146,7 @@
                                     :type="isNewPasswordVisible ? 'text' : 'password'"
                                     v-model="passwordForm.newPassword"
                                     :disable="savePasswordAction.isLoading"
-                                    :label="$t('settings.password.form.new_password')"
+                                    :label="$t('settings_password_form_new_password')"
                                     outlined
                                 >
                                     <template v-slot:prepend>
@@ -166,7 +166,7 @@
                                     :type="isRepeatPasswordVisible ? 'text' : 'password'"
                                     v-model="passwordForm.repeatPassword"
                                     :disable="savePasswordAction.isLoading"
-                                    :label="$t('settings.password.form.repeat_password')"
+                                    :label="$t('settings_password_form_repeat_password')"
                                     outlined
                                 >
                                     <template v-slot:prepend>
@@ -272,16 +272,16 @@ const savePasswordAction = usePromiseState<void, ResponseError>(async () => {
 });
 
 const saveGeneralError = computed<string>(() => {
-    if (saveGeneralAction.error) return t('settings.general.form.errors.default');
+    if (saveGeneralAction.error) return t('settings_general_form_errors_default');
 
     return undefined;
 });
 
 const savePasswordError = computed<string>(() => {
     if (savePasswordAction.error && savePasswordAction.error.response.status === 403)
-        return t('settings.password.form.errors.wrong_password');
+        return t('settings_password_form_errors_wrong_password');
 
-    if (savePasswordAction.error) return t('settings.general.form.errors.default');
+    if (savePasswordAction.error) return t('settings_general_form_errors_default');
 
     return undefined;
 });

@@ -2,7 +2,7 @@
     <div class="full-width bg-white border-bottom-accent">
         <div class="container">
             <h5 class="q-my-none q-mt-sm text-weight-bold">
-                {{ $t('dashboard.welcome', { name: accountStore.state.firstName }) }}
+                {{ $t('dashboard_welcome', { name: accountStore.state.firstName }) }}
             </h5>
             <p class="q-mb-sm">{{ accountStore.state.email }}</p>
         </div>

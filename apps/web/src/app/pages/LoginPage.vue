@@ -8,7 +8,7 @@
                     :initial-values="loginForm"
                 >
                     <q-card-section class="text-h4 text-weight-bolder q-mb-md">
-                        {{ $t('routes.login') }}
+                        {{ $t('routes_login') }}
                     </q-card-section>
 
                     <q-card-section>
@@ -17,7 +17,7 @@
                             v-model="loginForm.email"
                             :disable="loginAction.isLoading"
                             :error="!!loginError"
-                            :label="$t('login.form.email')"
+                            :label="$t('login_form_email')"
                             outlined
                         />
 
@@ -27,7 +27,7 @@
                             type="password"
                             :disable="loginAction.isLoading"
                             :error="!!loginError"
-                            :label="$t('login.form.password')"
+                            :label="$t('login_form_password')"
                             outlined
                             class="q-mt-md"
                         />
@@ -43,7 +43,7 @@
                             size="38px"
                             :disable="loginAction.isLoading"
                             v-model="loginForm.remember"
-                            :label="$t('login.form.remember')"
+                            :label="$t('login_form_remember')"
                         />
                     </q-card-section>
 
@@ -56,7 +56,7 @@
                             class="full-width"
                             rounded
                         >
-                            {{ $t('login.form.signin') }}
+                            {{ $t('login_form_signin') }}
                         </q-btn>
                     </q-card-section>
                 </Form>
@@ -65,8 +65,8 @@
 
         <div class="col welcome-area">
             <div class="welcome-wrapper">
-                <h2 class="text-white">{{ $t('login.welcome.title') }}</h2>
-                <div class="text-grey-5">{{ $t('login.welcome.description') }}</div>
+                <h2 class="text-white">{{ $t('login_welcome_title') }}</h2>
+                <div class="text-grey-5">{{ $t('login_welcome_description') }}</div>
             </div>
         </div>
     </div>
@@ -163,7 +163,7 @@ const loginAction = usePromiseState<void, ResponseError>(async () => {
 
 const loginError = computed<string>(() => {
     if (loginAction.error && loginAction.error.response.status === 401)
-        return t('login.form.errors.no_authorization');
+        return t('login_form_errors_no_authorization');
 
     return undefined;
 });

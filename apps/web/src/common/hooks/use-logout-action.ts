@@ -22,7 +22,7 @@ export function useLogoutAction(): UseLogoutActionReturn<void, unknown, undefine
 
     function showLogoutDialog(): void {
         dialog = $q.dialog({
-            message: t('account.logout_progress'),
+            message: t('account_logout_progress'),
             progress: true,
             persistent: true,
             ok: false,
@@ -43,7 +43,7 @@ export function useLogoutAction(): UseLogoutActionReturn<void, unknown, undefine
             $q.notify({
                 icon: 'mdi-check',
                 color: 'positive',
-                message: t('account.logout_success'),
+                message: t('account_logout_success'),
                 timeout: 1000,
             });
 
@@ -55,7 +55,7 @@ export function useLogoutAction(): UseLogoutActionReturn<void, unknown, undefine
             $q.notify({
                 icon: 'mdi-close',
                 color: 'negative',
-                message: t('account.logout_failed'),
+                message: t('account_logout_failed'),
                 timeout: 1000,
             });
         }
