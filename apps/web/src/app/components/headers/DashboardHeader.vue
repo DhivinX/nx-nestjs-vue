@@ -1,10 +1,10 @@
 <template>
     <div class="full-width bg-white border-bottom-accent">
         <div class="container">
-            <h4 class="q-my-none q-mt-lg text-weight-bold">
+            <h5 class="q-my-none q-mt-sm text-weight-bold">
                 {{ $t('dashboard.welcome', { name: accountStore.state.firstName }) }}
-            </h4>
-            <p class="q-mb-lg">{{ accountStore.state.email }}</p>
+            </h5>
+            <p class="q-mb-sm">{{ accountStore.state.email }}</p>
         </div>
     </div>
 </template>

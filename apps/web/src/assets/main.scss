@@ -1,7 +1,7 @@
-@import 'roboto.scss';
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
 
-*:not(i) {
-    font-family: 'Roboto', sans-serif;
+body:not(i) {
+    font-family: 'Poppins', sans-serif;
 }
 
 .app-header {

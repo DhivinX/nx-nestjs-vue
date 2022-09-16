@@ -23,4 +23,5 @@ declare module '@vue/runtime-core' {
     VInput: typeof import('./src/app/components/form/VInput.vue')['default']
     VSelect: typeof import('./src/app/components/form/VSelect.vue')['default']
   }
+
 }

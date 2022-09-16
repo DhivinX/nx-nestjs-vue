@@ -1,11 +1,11 @@
 <template>
     <div class="full-width bg-white border-bottom-accent">
         <div class="container">
-            <div class="row items-center q-mt-lg q-mb-lg">
-                <q-icon :name="props.icon" class="q-mr-md" size="xl" />
-                <h4 class="q-my-none text-weight-bold">
+            <div class="row items-center q-my-sm">
+                <q-icon :name="props.icon" class="q-mr-md" size="lg" />
+                <h5 class="q-my-none text-weight-bold">
                     {{ props.title }}
-                </h4>
+                </h5>
             </div>
         </div>
     </div>
