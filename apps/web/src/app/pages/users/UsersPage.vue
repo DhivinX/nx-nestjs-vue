@@ -1,11 +1,7 @@
 <template>
     <AppPage :loading="usersAction.counter === 0">
         <template v-slot:header>
-            <AppPageHeader
-                :title="$t('routes_users')"
-                :subtitle="$t('routes_routes_users_subtitle')"
-                icon="mdi-account-supervisor"
-            />
+            <AppPageHeader :title="$t('routes_users')" icon="mdi-account-supervisor" />
         </template>
 
         <AppCard>
