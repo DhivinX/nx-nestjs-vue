@@ -36,41 +36,69 @@ const safeDOM = {
  * https://matejkustec.github.io/SpinThatShit
  */
 function useLoading() {
-    const className = `loaders-css__square-spin`;
+    const className = `lds-ring`;
     const styleContent = `
-@keyframes square-spin {
-  25% { transform: perspective(100px) rotateX(180deg) rotateY(0); }
-  50% { transform: perspective(100px) rotateX(180deg) rotateY(180deg); }
-  75% { transform: perspective(100px) rotateX(0) rotateY(180deg); }
-  100% { transform: perspective(100px) rotateX(0) rotateY(0); }
-}
-.${className} > div {
-  animation-fill-mode: both;
-  width: 50px;
-  height: 50px;
-  background: #fff;
-  animation: square-spin 3s 0s cubic-bezier(0.09, 0.57, 0.49, 0.9) infinite;
-}
-.app-loading-wrap {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #282c34;
-  z-index: 9;
-}
-    `;
-    const oStyle = document.createElement('style');
-    const oDiv = document.createElement('div');
+        .app-loading-wrap {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #111827;
+            z-index: 9;
+        }
 
-    oStyle.id = 'app-loading-style';
+        .${className} {
+            display: inline-block;
+            position: relative;
+            width: 64px;
+            height: 64px;
+        }
+
+        .${className} div {
+            box-sizing: border-box;
+            display: block;
+            position: absolute;
+            width: 48px;
+            height: 48px;
+            margin: 8px;
+            border: 3px solid #4F46E5;
+            border-radius: 50%;
+            animation: ${className} 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+            border-color: #4F46E5 transparent transparent transparent;
+        }
+
+        .${className} div:nth-child(1) {
+            animation-delay: -0.45s;
+        }
+
+        .${className} div:nth-child(2) {
+            animation-delay: -0.3s;
+        }
+
+        .${className} div:nth-child(3) {
+            animation-delay: -0.15s;
+        }
+
+        @keyframes ${className} {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    `;
+
+    const oStyle = document.createElement('style');
     oStyle.innerHTML = styleContent;
+
+    const oDiv = document.createElement('div');
     oDiv.className = 'app-loading-wrap';
-    oDiv.innerHTML = `<div class="${className}"><div></div></div>`;
+    oDiv.innerHTML = `<div class="${className}"><div></div><div></div><div></div><div></div></div>`;
 
     return {
         appendLoading() {
@@ -93,4 +121,4 @@ window.onmessage = (ev) => {
     ev.data.payload === 'removeLoading' && removeLoading();
 };
 
-setTimeout(removeLoading, 4999);
+setTimeout(removeLoading, 30000);

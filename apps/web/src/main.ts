@@ -38,4 +38,6 @@ app.use(Quasar, {
     },
 });
 
-app.mount('#app');
+app.mount('#app').$nextTick(() => {
+    postMessage({ payload: 'removeLoading' }, '*');
+});
