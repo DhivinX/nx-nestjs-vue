@@ -2,7 +2,6 @@
     "$schema": "./node_modules/nx/schemas/workspace-schema.json",
     "version": 2,
     "projects": {
-        "web-electron": "apps/web-electron",
         "server": "apps/server",
         "shared": "libs/shared",
         "utils": "libs/utils",

@@ -9,7 +9,7 @@ interface Config {
 
 export const config: Config = {
     defaultLocale: 'en',
-    useCookies: true,
+    useCookies: import.meta.env.VITE_DEV_MODE !== 'electron',
 
     api: {
         host: `http://localhost`,

@@ -9,20 +9,11 @@
       "defaultConfiguration": "production",
       "options": {
         "outputPath": "dist/apps/web",
-        "baseHref": "/",
+        "baseHref": "./",
         "configFile": "apps/web/vite.config.ts"
       },
       "configurations": {
         "production": {
-          "fileReplacements": [
-            {
-              "replace": "apps/web/src/environments/environment.ts",
-              "with": "apps/web/src/environments/environment.prod.ts"
-            }
-          ]
-        },
-        "electron": {
-          "baseHref": "./",
           "fileReplacements": [
             {
               "replace": "apps/web/src/environments/environment.ts",
@@ -46,6 +37,23 @@
               "replace": "apps/web/src/environments/environment.ts",
               "with": "apps/web/src/environments/environment.prod.ts"
             }
+          ]
+        }
+      }
+    },
+    "electron": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "nx serve web"
+        ],
+        "parallel": false
+      },
+      "configurations": {
+        "build": {
+          "commands": [
+            "nx build web",
+            "electron-builder"
           ]
         }
       }
