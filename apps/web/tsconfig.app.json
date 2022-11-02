@@ -7,5 +7,5 @@
     "composite": true
   },
 
-  "include": ["vite.config.*", "vitest.config.*", "cypress.config.*"]
+  "include": ["vite.config.*", "vitest.config.*", "cypress.config.*", "../../tsconfig.base.json"]
 }
