@@ -6,7 +6,7 @@ import Components from 'unplugin-vue-components/vite';
 import { quasar, transformAssetUrls } from '@quasar/vite-plugin';
 import vueI18n from '@intlify/vite-plugin-vue-i18n';
 import checker from 'vite-plugin-checker';
-import electron, { onstart } from 'vite-plugin-electron';
+import electron from 'vite-plugin-electron';
 
 const resolve = (p: string) => path.resolve(__dirname, p);
 
@@ -64,38 +64,63 @@ const viteConfig = {
         }),
 
         process.env.VITE_DEV_MODE === 'electron'
-            ? electron({
-                  main: {
+            ? electron([
+                  {
                       entry: path.join(__dirname, 'electron/main/index.ts'),
                       vite: {
                           build: {
-                              // For Debug
                               sourcemap: true,
                               outDir: 'dist/apps/web/electron/main',
                           },
-                          // Will start Electron via VSCode Debug
-                          plugins: [process.env.VSCODE_DEBUG ? onstart() : null],
                       },
                   },
-                  preload: {
-                      input: {
-                          // You can configure multiple preload here
-                          index: path.join(__dirname, 'electron/preload/index.ts'),
-                      },
+
+                  {
+                      entry: path.join(__dirname, 'electron/preload/index.ts'),
                       vite: {
                           build: {
-                              // For Debug
                               sourcemap: 'inline',
                               outDir: 'dist/apps/web/electron/preload',
                           },
                       },
+                      onstart(options) {
+                          options.reload();
+                      },
                   },
-                  // Enables use of Node.js API in the Renderer-process
-                  // https://github.com/electron-vite/vite-plugin-electron/tree/main/packages/electron-renderer#electron-renderervite-serve
-                  renderer: {},
-              })
+              ])
             : null,
     ],
 };
+
+// {
+//     main: {
+//         entry: path.join(__dirname, 'electron/main/index.ts'),
+//         vite: {
+//             build: {
+//                 // For Debug
+//                 sourcemap: true,
+//                 outDir: 'dist/apps/web/electron/main',
+//             },
+//             // Will start Electron via VSCode Debug
+//             plugins: [process.env.VSCODE_DEBUG ? onstart() : null],
+//         },
+//     },
+//     preload: {
+//         input: {
+//             // You can configure multiple preload here
+//             index: path.join(__dirname, 'electron/preload/index.ts'),
+//         },
+//         vite: {
+//             build: {
+//                 // For Debug
+//                 sourcemap: 'inline',
+//                 outDir: 'dist/apps/web/electron/preload',
+//             },
+//         },
+//     },
+//     // Enables use of Node.js API in the Renderer-process
+//     // https://github.com/electron-vite/vite-plugin-electron/tree/main/packages/electron-renderer#electron-renderervite-serve
+//     renderer: {},
+// }
 
 export default defineConfig(viteConfig);
