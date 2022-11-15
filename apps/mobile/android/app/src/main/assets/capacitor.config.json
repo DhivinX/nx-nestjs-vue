@@ -1,0 +1,6 @@
+{
+	"appId": "com.example.vnts",
+	"appName": "nx-vnts",
+	"webDir": "../../dist/apps/mobile",
+	"bundledWebRuntime": false
+}

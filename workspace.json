@@ -2,10 +2,10 @@
     "$schema": "./node_modules/nx/schemas/workspace-schema.json",
     "version": 2,
     "projects": {
+        "mobile": "apps/mobile",
         "server": "apps/server",
         "shared": "libs/shared",
         "utils": "libs/utils",
-        "web": "apps/web",
-        "mobile": "apps/mobile"
+        "web": "apps/web"
     }
 }

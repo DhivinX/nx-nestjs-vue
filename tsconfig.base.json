@@ -1,35 +1,32 @@
 {
-  "compileOnSave": false,
-  "compilerOptions": {
-    "rootDir": ".",
-    "sourceMap": true,
-    "moduleResolution": "node",
-    "target": "es2015",
-    "module": "esnext",
-    "lib": ["es2017", "dom"],
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "allowJs": true,
-    "resolveJsonModule": true,
-    "importHelpers": true,
-    "esModuleInterop": true,
-    "skipLibCheck": false,
-    "skipDefaultLibCheck": false,
-
-    "strict": true,
-    "noImplicitAny": false,
-    "strictBindCallApply": false,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noImplicitReturns": true,
-    "strictNullChecks": false,
-
-    "baseUrl": ".",
-    
-    "paths": {
-      "@nx-vnts/shared": ["libs/shared/src/index.ts"],
-      "@nx-vnts/utils": ["libs/utils/src/index.ts"]
-    }
-  },
-  "exclude": ["node_modules", "tmp"]
+    "compileOnSave": false,
+    "compilerOptions": {
+        "rootDir": ".",
+        "sourceMap": true,
+        "moduleResolution": "node",
+        "target": "es2015",
+        "module": "esnext",
+        "lib": ["es2017", "dom"],
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "allowJs": true,
+        "resolveJsonModule": true,
+        "importHelpers": true,
+        "esModuleInterop": true,
+        "skipLibCheck": false,
+        "skipDefaultLibCheck": false,
+        "strict": true,
+        "noImplicitAny": false,
+        "strictBindCallApply": false,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "noImplicitReturns": true,
+        "strictNullChecks": false,
+        "baseUrl": ".",
+        "paths": {
+            "@nx-vnts/shared": ["libs/shared/src/index.ts"],
+            "@nx-vnts/utils": ["libs/utils/src/index.ts"]
+        }
+    },
+    "exclude": ["node_modules", "tmp"]
 }
