@@ -5,6 +5,7 @@
         "server": "apps/server",
         "shared": "libs/shared",
         "utils": "libs/utils",
-        "web": "apps/web"
+        "web": "apps/web",
+        "mobile": "apps/mobile"
     }
 }
