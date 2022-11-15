@@ -16,6 +16,7 @@ http:
   # More info: https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
   cors: 
     - 'http://localhost:8080'
+    - 'http://localhost:8090'
     - 'app://localhost'
 
 # Database server settings

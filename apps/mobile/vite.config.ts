@@ -23,6 +23,10 @@ const viteConfig = {
     server: {
         host: true,
         port: 8090,
+
+        fs: {
+            allow: ['../..'],
+        },
     },
 
     clearScreen: true,
