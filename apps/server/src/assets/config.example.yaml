@@ -18,6 +18,8 @@ http:
     - 'http://localhost:8080'
     - 'http://localhost:8090'
     - 'app://localhost'
+    - 'capacitor://localhost'
+    - 'http://localhost'
 
 # Database server settings
 # More info: https://typeorm.io

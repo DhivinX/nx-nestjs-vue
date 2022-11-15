@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia';
-import { useCookies } from '@vueuse/integrations/useCookies';
+//import { useCookies } from '@vueuse/integrations/useCookies';
 import { computed, reactive } from 'vue';
 import { useRouter } from 'vue-router';
 import { useQuasar } from 'quasar';
@@ -27,7 +27,7 @@ interface State {
 }
 
 export const useAccountStore = defineStore('account', () => {
-    const cookies = useCookies(['token', 'token_exp']);
+    //const cookies = useCookies(['token', 'token_exp']);
     const storageToken = useStorage<string>('token', null);
     const storageTokenExp = useStorage<number>('token_exp', null);
 
@@ -87,15 +87,17 @@ export const useAccountStore = defineStore('account', () => {
     function refreshAuthState(): void {
         if (state.authenticated) return;
 
-        const tokenExpiration = storageToken.value
-            ? storageTokenExp.value
-            : cookies.get<number>('token_exp');
+        // const tokenExpiration = storageToken.value
+        //     ? storageTokenExp.value
+        //     : cookies.get<number>('token_exp');
+
+        const tokenExpiration = storageTokenExp.value;
 
         if (tokenExpiration) {
             if (tokenExpiration - Date.now() > 0) {
                 setAuthenticated(true);
             } else {
-                cookies.remove('token_exp');
+                //cookies.remove('token_exp');
                 storageToken.value = null;
                 storageTokenExp.value = null;
 
@@ -118,8 +120,8 @@ export const useAccountStore = defineStore('account', () => {
                 if (loginResponse.token) storageToken.value = loginResponse.token;
 
                 if (loginResponse.expirationTime !== undefined) {
-                    if (storageToken.value) storageTokenExp.value = loginResponse.expirationTime;
-                    else cookies.set('token_exp', loginResponse.expirationTime);
+                    storageTokenExp.value = loginResponse.expirationTime;
+                    //cookies.set('token_exp', loginResponse.expirationTime);
                 }
             }
 
@@ -127,7 +129,7 @@ export const useAccountStore = defineStore('account', () => {
         } else {
             reset();
 
-            cookies.remove('token_exp');
+            //cookies.remove('token_exp');
             storageToken.value = null;
             storageTokenExp.value = null;
 

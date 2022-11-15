@@ -55,6 +55,7 @@ const viteConfig = {
               }),
 
         vueI18n({
+            defaultSFCLang: 'yaml',
             include: resolve('./src/locales/**'),
         }),
 

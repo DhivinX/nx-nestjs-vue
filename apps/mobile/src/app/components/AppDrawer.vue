@@ -32,19 +32,6 @@
 
                     <q-item-section>{{ routeTitle('dashboard') }}</q-item-section>
                 </q-item>
-
-                <q-item
-                    v-if="userHasPermission('users')"
-                    :active="route.name === 'users'"
-                    clickable
-                    @click="router.push({ name: 'users' })"
-                >
-                    <q-item-section avatar>
-                        <q-icon name="mdi-account-supervisor" />
-                    </q-item-section>
-
-                    <q-item-section>{{ routeTitle('users') }}</q-item-section>
-                </q-item>
             </q-list>
 
             <q-list padding>

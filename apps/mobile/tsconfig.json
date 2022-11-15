@@ -30,7 +30,7 @@
     "**/*.ts",
     "**/*.tsx",
     "**/*.vue",
-    "**/*.json"
+    "**/*.json" 
   ],
 
   "exclude": ["**/*.spec.js", "**/*.spec.jsx", "**/*.spec.ts", "**/*.spec.tsx"],
