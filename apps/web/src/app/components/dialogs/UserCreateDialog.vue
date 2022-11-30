@@ -6,6 +6,7 @@
         :validation-schema="userCreateSchema"
         :initial-values="form"
         :width="600"
+        is-form
     >
         <template #default>
             <q-card-section class="scroll" style="max-height: 50vh">
@@ -107,8 +108,8 @@
 
             <q-btn
                 color="primary"
-                icon="mdi-check"
-                :label="$t('save')"
+                icon="mdi-plus"
+                :label="$t('add')"
                 :loading="saveAction.isLoading"
                 :disable="saveAction.isLoading"
                 type="submit"

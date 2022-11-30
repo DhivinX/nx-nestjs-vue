@@ -6,16 +6,15 @@
 
         <div class="row q-col-gutter-lg">
             <div class="col-12 col-lg-6">
-                <AppCard class="full-height">
-                    <Form
-                        @submit="saveGeneralAction.execute(500)"
-                        :validation-schema="userUpdateSelfSchema"
-                        :initial-values="generalForm"
-                    >
-                        <q-card-section class="card-title">
-                            {{ $t('settings_general_title') }}
-                        </q-card-section>
-
+                <AppCard
+                    class="full-height"
+                    :title="$t('settings_general_title')"
+                    @submit="saveGeneralAction.execute(500)"
+                    :validation-schema="userUpdateSelfSchema"
+                    :initial-values="generalForm"
+                    is-form
+                >
+                    <template #default>
                         <q-card-section>
                             <div class="row q-col-gutter-md">
                                 <VInput
@@ -32,7 +31,7 @@
                                 </VInput>
 
                                 <VInput
-                                    class="col-12"
+                                    class="col-12 col-md-6"
                                     name="firstName"
                                     v-model="generalForm.firstName"
                                     :disable="saveGeneralAction.isLoading"
@@ -45,7 +44,7 @@
                                 </VInput>
 
                                 <VInput
-                                    class="col-12"
+                                    class="col-12 col-md-6"
                                     name="lastName"
                                     v-model="generalForm.lastName"
                                     :disable="saveGeneralAction.isLoading"
@@ -87,36 +86,35 @@
 
                         <q-card-section class="text-center text-negative" v-if="saveGeneralError">
                             {{ saveGeneralError }}
-                        </q-card-section>
+                        </q-card-section></template
+                    >
 
-                        <q-card-actions>
-                            <q-space />
+                    <template #actions>
+                        <q-space />
 
-                            <q-btn
-                                icon="mdi-check"
-                                :label="$t('save')"
-                                type="submit"
-                                :loading="saveGeneralAction.isLoading"
-                                :disable="saveGeneralAction.isLoading"
-                                color="primary"
-                                rounded
-                            />
-                        </q-card-actions>
-                    </Form>
+                        <q-btn
+                            icon="mdi-check"
+                            :label="$t('save')"
+                            type="submit"
+                            :loading="saveGeneralAction.isLoading"
+                            :disable="saveGeneralAction.isLoading"
+                            color="primary"
+                            rounded
+                        />
+                    </template>
                 </AppCard>
             </div>
 
             <div class="col-12 col-lg-6">
-                <AppCard class="full-height">
-                    <Form
-                        @submit="savePasswordAction.execute(500)"
-                        :validation-schema="userUpdateSelfPasswordSchema"
-                        :initial-values="passwordForm"
-                    >
-                        <q-card-section class="card-title">
-                            {{ $t('settings_password_title') }}
-                        </q-card-section>
-
+                <AppCard
+                    class="full-height"
+                    :title="$t('settings_password_title')"
+                    @submit="savePasswordAction.execute(500)"
+                    :validation-schema="userUpdateSelfPasswordSchema"
+                    :initial-values="passwordForm"
+                    is-form
+                >
+                    <template #default>
                         <q-card-section>
                             <div class="row q-col-gutter-md">
                                 <VInput
@@ -189,21 +187,20 @@
                         <q-card-section class="text-center text-negative" v-if="savePasswordError">
                             {{ savePasswordError }}
                         </q-card-section>
+                    </template>
+                    <template #actions>
+                        <q-space />
 
-                        <q-card-actions>
-                            <q-space />
-
-                            <q-btn
-                                icon="mdi-check"
-                                :label="$t('save')"
-                                type="submit"
-                                :loading="savePasswordAction.isLoading"
-                                :disable="savePasswordAction.isLoading"
-                                color="primary"
-                                rounded
-                            />
-                        </q-card-actions>
-                    </Form>
+                        <q-btn
+                            icon="mdi-check"
+                            :label="$t('save')"
+                            type="submit"
+                            :loading="savePasswordAction.isLoading"
+                            :disable="savePasswordAction.isLoading"
+                            color="primary"
+                            rounded
+                        />
+                    </template>
                 </AppCard>
             </div>
         </div>
@@ -211,7 +208,6 @@
 </template>
 
 <script setup lang="ts">
-import { Form } from 'vee-validate';
 import { usePromiseState, api, ResponseError } from '@/common';
 import { ref, reactive, computed, watch } from 'vue';
 import { useAccountStore } from '@/stores/account';

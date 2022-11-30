@@ -6,16 +6,14 @@
 
         <div class="row q-col-gutter-lg">
             <div class="col-12">
-                <AppCard class="full-height">
-                    <Form
-                        @submit="saveAction.execute(500)"
-                        :validation-schema="userUpdateSchema"
-                        :initial-values="form"
-                    >
-                        <q-card-section class="card-title">
-                            {{ $t('users_title') }}
-                        </q-card-section>
-
+                <AppCard
+                    :title="$t('users_title')"
+                    @submit="saveAction.execute(500)"
+                    :validation-schema="userUpdateSchema"
+                    :initial-values="form"
+                    is-form
+                >
+                    <template #default>
                         <q-card-section class="row q-col-gutter-md">
                             <VInput
                                 class="col-12 col-lg-6"
@@ -126,20 +124,21 @@
                         <q-card-section class="text-center text-negative" v-if="saveError">
                             {{ saveError }}
                         </q-card-section>
+                    </template>
 
-                        <q-card-actions>
-                            <q-space />
-                            <q-btn
-                                icon="mdi-check"
-                                :label="$t('save')"
-                                type="submit"
-                                :loading="saveAction.isLoading"
-                                :disable="saveAction.isLoading"
-                                color="primary"
-                                rounded
-                            />
-                        </q-card-actions>
-                    </Form>
+                    <template #actions>
+                        <q-space />
+
+                        <q-btn
+                            icon="mdi-check"
+                            :label="$t('save')"
+                            type="submit"
+                            :loading="saveAction.isLoading"
+                            :disable="saveAction.isLoading"
+                            color="primary"
+                            rounded
+                        />
+                    </template>
                 </AppCard>
             </div>
         </div>
@@ -147,7 +146,6 @@
 </template>
 
 <script setup lang="ts">
-import { Form } from 'vee-validate';
 import { api, usePromiseState, ResponseError } from '@/common';
 import { Role, UserProfileResponse, UserUpdateDto, userUpdateSchema } from '@nx-vnts/shared';
 import { computed, ref, reactive, watch } from 'vue';
