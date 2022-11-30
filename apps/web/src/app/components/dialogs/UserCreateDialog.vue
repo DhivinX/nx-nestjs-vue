@@ -1,10 +1,13 @@
 <template>
-    <AppDialog icon="mdi-plus" :title="$t('users_create_title')" v-slot="{ ok, cancel }">
-        <Form
-            @submit="saveAction.execute(500, ok)"
-            :validation-schema="userCreateSchema"
-            :initial-values="form"
-        >
+    <AppDialog
+        icon="mdi-plus"
+        :title="$t('users_create_title')"
+        @submit="({ ok }) => saveAction.execute(500, ok)"
+        :validation-schema="userCreateSchema"
+        :initial-values="form"
+        :width="600"
+    >
+        <template #default>
             <q-card-section class="scroll" style="max-height: 50vh">
                 <div class="row q-col-gutter-md">
                     <q-select
@@ -24,7 +27,7 @@
                     </q-select>
 
                     <VInput
-                        class="col-12"
+                        class="col-12 col-md-6"
                         name="firstName"
                         v-model="form.firstName"
                         :disable="saveAction.isLoading"
@@ -37,7 +40,7 @@
                     </VInput>
 
                     <VInput
-                        class="col-12"
+                        class="col-12 col-md-6"
                         name="lastName"
                         v-model="form.lastName"
                         :disable="saveAction.isLoading"
@@ -88,34 +91,34 @@
             <q-card-section class="text-center text-negative" v-if="saveError">
                 {{ saveError }}
             </q-card-section>
+        </template>
 
-            <q-card-actions>
-                <q-space />
-                <q-btn
-                    color="secondary"
-                    icon="mdi-close"
-                    :label="$t('cancel')"
-                    :disable="saveAction.isLoading"
-                    @click="cancel"
-                    rounded
-                />
+        <template #actions="{ cancel }">
+            <q-space />
+            <q-btn
+                color="secondary"
+                icon="mdi-close"
+                :label="$t('close')"
+                :disable="saveAction.isLoading"
+                @click="cancel"
+                rounded
+                outline
+            />
 
-                <q-btn
-                    color="primary"
-                    icon="mdi-check"
-                    :label="$t('save')"
-                    :loading="saveAction.isLoading"
-                    :disable="saveAction.isLoading"
-                    type="submit"
-                    rounded
-                />
-            </q-card-actions>
-        </Form>
+            <q-btn
+                color="primary"
+                icon="mdi-check"
+                :label="$t('save')"
+                :loading="saveAction.isLoading"
+                :disable="saveAction.isLoading"
+                type="submit"
+                rounded
+            />
+        </template>
     </AppDialog>
 </template>
 
 <script setup lang="ts">
-import { Form } from 'vee-validate';
 import { Role, UserCreateDto, userCreateSchema } from '@nx-vnts/shared';
 import { useI18n } from 'vue-i18n';
 import { computed, reactive, ref, watch } from 'vue';
