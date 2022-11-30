@@ -9,7 +9,7 @@
         is-form
     >
         <template #default>
-            <q-card-section class="scroll" style="max-height: 50vh">
+            <q-card-section>
                 <div class="row q-col-gutter-md">
                     <q-select
                         class="col-12"
