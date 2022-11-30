@@ -8,6 +8,8 @@ Monorepo template with NX Workspaces, Vue 3, NestJS and TypeScript.
 * Full Stack: Front-end, Back-end, Shared/Utils module packages   
 * Front-end package: [Vue 3](https://vuejs.org/guide/introduction.html) | [Vite](https://vitejs.dev/guide/)
 * Back-end package: [NestJS](https://docs.nestjs.com)
+* Electron for desktop support
+* Capacitor for mobile support
 * Shared package: shared code used in both front-end and backend-end
 * Utils package: shared code used in all packages
 
@@ -39,6 +41,9 @@ npm run web:dev
 # You can copy the config.example.yaml file and rename it to config.yaml
 # Then you can configure database access and other server settings
 npm run server:dev
+
+# 6. Or run backend and frontend with hot reload parallel
+npm run apps:dev
 
 ```
 
@@ -113,9 +118,13 @@ More info here: https://vuejs.org/guide/typescript/overview.html#takeover-mode
  
 * `apps:dev` - run front-end and back-end simultaneously with hot reload
 * `web:dev` - run front-end with hot reload
+* `web:electron:dev` - run front-end in electron app with hot reload
+* `web:electron:build` - build electron app with frontend
+* `mobile:dev` - run mobile front-end with hot reload
+* `mobile:android` - build front-end and sync android project
 * `server:dev` - run back-end with hot reload
+* `server:seed` - seed script for server
 * `build` - build all packages
-* `seed` - seed script for server
 * `clean` - clean all packages
 * `lint` - lint all packages
 
