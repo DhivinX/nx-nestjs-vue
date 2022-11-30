@@ -5,9 +5,9 @@
         </template>
 
         <AppCard>
-            <q-card-section>
-                <div class="row q-mb-lg q-gutter-y-md">
-                    <div class="col-12 col-sm-6 self-center">
+            <template #titleBar>
+                <div class="row q-gutter-y-md full-width">
+                    <div class="col-6 self-center">
                         <q-input
                             outlined
                             rounded
@@ -21,7 +21,7 @@
                             </template>
                         </q-input>
                     </div>
-                    <div class="col-12 col-sm-6 text-right self-center">
+                    <div class="col-6 text-right self-center">
                         <q-btn
                             icon="mdi-plus"
                             :label="$t('add')"
@@ -32,7 +32,9 @@
                         />
                     </div>
                 </div>
+            </template>
 
+            <q-card-section>
                 <q-table
                     class="no-shadow"
                     row-key="id"

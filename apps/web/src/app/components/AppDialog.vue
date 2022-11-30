@@ -12,6 +12,8 @@
                 ref="form"
             >
                 <div class="title-bar">
+                    <slot v-bind="slotBind" name="titleBar"></slot>
+
                     <div v-if="!!$slots.titleBarLeft">
                         <slot v-bind="slotBind" name="titleBarLeft"></slot>
                     </div>

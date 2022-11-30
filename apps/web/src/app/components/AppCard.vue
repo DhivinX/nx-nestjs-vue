@@ -8,6 +8,8 @@
             ref="form"
         >
             <div class="title-bar">
+                <slot name="titleBar"></slot>
+
                 <div v-if="!!$slots.titleBarLeft">
                     <slot name="titleBarLeft"></slot>
                 </div>
