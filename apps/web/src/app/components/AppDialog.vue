@@ -1,32 +1,76 @@
 <template>
-    <q-dialog ref="dialogRef" @hide="onDialogHide">
-        <q-card class="q-dialog-plugin q-dialog-max-width">
-            <div class="flex items-center bg-secondary text-white q-pa-sm">
-                <q-icon v-if="props.icon" :name="props.icon" class="q-mr-sm" size="lg" />
-                <h6 class="q-ml-sm q-my-none">{{ props.title }}</h6>
-            </div>
-            <q-card-section
-                class="row justify-center align-center items-center"
-                style="padding-top: 30px"
-                v-if="props.loading"
+    <q-dialog ref="dialogRef" @hide="onDialogHide" :maximized="maximized">
+        <q-card
+            class="q-dialog-plugin q-dialog-max-width"
+            :style="{ 'max-width': `${props.width}px` }"
+        >
+            <component
+                :is="props.isForm ? Form : 'fragment'"
+                @submit="$emit('submit', slotBind)"
+                :validation-schema="props.validationSchema"
+                :initial-values="props.initialValues"
+                ref="form"
             >
-                <q-spinner color="primary" size="50px" />
-            </q-card-section>
-            <slot v-else v-bind="slotBind"></slot>
+                <div class="title-bar">
+                    <div v-if="!!$slots.titleBarLeft">
+                        <slot v-bind="slotBind" name="titleBarLeft"></slot>
+                    </div>
+
+                    <q-space v-if="!!$slots.titleBarLeft" />
+
+                    <q-icon v-if="props.icon" :name="props.icon" class="q-mr-sm" size="sm" />
+                    <h5 v-if="props.title">{{ props.title }}</h5>
+
+                    <q-space v-if="!!$slots.titleBarRight" />
+                    <slot
+                        v-bind="slotBind"
+                        v-if="!!$slots.titleBarRight"
+                        name="titleBarRight"
+                    ></slot>
+                </div>
+
+                <q-card-section
+                    class="row justify-center align-center items-center"
+                    style="height: 100%; min-height: 200px"
+                    v-if="props.loading"
+                >
+                    <q-spinner color="primary" size="50px" />
+                </q-card-section>
+
+                <div
+                    :style="{ 'max-height': !props.maximized ? 'calc(90vh - 180px)' : '100vh' }"
+                    class="scroll"
+                    v-else
+                >
+                    <slot v-bind="slotBind"></slot>
+                </div>
+
+                <q-card-actions v-if="!!$slots.actions">
+                    <slot v-bind="slotBind" name="actions"></slot>
+                </q-card-actions>
+            </component>
         </q-card>
     </q-dialog>
 </template>
 
 <script setup lang="ts">
+import { Form } from 'vee-validate';
 import { useDialogPluginComponent } from 'quasar';
+import { ref } from 'vue';
 
-defineEmits([...useDialogPluginComponent.emits]);
+defineEmits([...useDialogPluginComponent.emits, 'submit']);
 const { dialogRef, onDialogHide, onDialogOK, onDialogCancel } = useDialogPluginComponent();
+const form = ref();
 
 interface Props {
     title?: string;
     icon?: string;
     loading?: boolean;
+    width?: number;
+    maximized?: boolean;
+    isForm?: boolean;
+    validationSchema?: any;
+    initialValues?: any;
 }
 
 interface SlotBind {
