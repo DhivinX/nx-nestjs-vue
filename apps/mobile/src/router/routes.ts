@@ -1,11 +1,9 @@
 import { RouteRecordRaw } from 'vue-router';
-import { AuthMeta } from './guards';
+import { AuthMeta } from './middlewares';
 
 import DefaultLayout from '@/app/layouts/DefaultLayout.vue';
 import AppLayout from '@/app/layouts/AppLayout.vue';
 import LoginPage from '@/app/pages/LoginPage.vue';
-import DashboardPage from '@/app/pages/DashboardPage.vue';
-import SettingsPage from '@/app/pages/SettingsPage.vue';
 
 export const routes: RouteRecordRaw[] = [
     {
@@ -29,7 +27,7 @@ export const routes: RouteRecordRaw[] = [
             {
                 path: '/dashboard',
                 name: 'dashboard',
-                component: DashboardPage,
+                component: () => import('@/app/pages/DashboardPage.vue'),
                 meta: {
                     auth: AuthMeta.Required,
                 },
@@ -37,7 +35,7 @@ export const routes: RouteRecordRaw[] = [
             {
                 path: '/settings',
                 name: 'settings',
-                component: SettingsPage,
+                component: () => import('@/app/pages/SettingsPage.vue'),
                 meta: {
                     auth: AuthMeta.Required,
                 },

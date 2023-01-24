@@ -1,6 +1,6 @@
 import { Role } from '@workspace/shared';
 import { createRouter, createWebHashHistory } from 'vue-router';
-import { AuthMeta, useAuthGuard } from './guards';
+import { AuthMeta, useAuthGuard, useLoadingIndicator } from './middlewares';
 import { routes } from './routes';
 
 declare module 'vue-router' {
@@ -16,5 +16,6 @@ const router = createRouter({
 });
 
 useAuthGuard(router);
+useLoadingIndicator(router);
 
 export default router;

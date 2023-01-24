@@ -15,14 +15,21 @@
         <AppDrawer v-model="drawerOpen" />
 
         <q-page-container class="app-page-container">
+            <q-linear-progress
+                indeterminate
+                v-if="appStore.state.isRouteLoading"
+                style="position: fixed; z-index: 999"
+            />
             <RouterView />
         </q-page-container>
     </q-layout>
 </template>
 
 <script setup lang="ts">
+import { useAppStore } from '@/stores/app';
 import { ref } from 'vue';
 
+const appStore = useAppStore();
 const drawerOpen = ref<boolean>(false);
 
 function toggleDrawer() {
