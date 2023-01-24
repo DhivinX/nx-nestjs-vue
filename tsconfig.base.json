@@ -16,16 +16,14 @@
         "skipLibCheck": false,
         "skipDefaultLibCheck": false,
         "strict": true,
-        "noImplicitAny": false,
         "strictBindCallApply": false,
-        "noUnusedLocals": true,
-        "noUnusedParameters": true,
         "noImplicitReturns": true,
         "strictNullChecks": false,
+        "noImplicitAny": false,
+
         "baseUrl": ".",
         "paths": {
-            "@workspace/shared": ["libs/shared/src/index.ts"],
-            "@workspace/utils": ["libs/utils/src/index.ts"]
+            "@workspace/shared": ["libs/shared/src/index.ts"]
         }
     },
     "exclude": ["node_modules", "tmp"]
