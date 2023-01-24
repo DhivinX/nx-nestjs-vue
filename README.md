@@ -5,7 +5,7 @@
 Monorepo template with NX Workspaces, Vue 3, NestJS and TypeScript.
 
 * [NX workspace](https://nx.dev/getting-started/intro) to manage monorepo
-* Full Stack: Front-end, Back-end, Shared/Utils module packages   
+* Full Stack: Front-end, Back-end, Shared/Utils module packages 
 * Front-end package: [Vue 3](https://vuejs.org/guide/introduction.html) | [Vite](https://vitejs.dev/guide/)
 * Back-end package: [NestJS](https://docs.nestjs.com)
 * Electron for desktop support
