@@ -1,26 +1,15 @@
 {
-    "$schema": "..\\..\\node_modules\\nx\\schemas\\project-schema.json",
+    "$schema": "https://raw.githubusercontent.com/nrwl/nx/master/packages/nx/schemas/project-schema.json",
     "sourceRoot": "apps/mobile/src",
     "projectType": "application",
     "targets": {
         "build": {
             "executor": "@nxext/vite:build",
             "outputs": ["{options.outputPath}"],
-            "defaultConfiguration": "production",
             "options": {
                 "outputPath": "dist/apps/mobile",
                 "baseHref": "./",
                 "configFile": "apps/mobile/vite.config.ts"
-            },
-            "configurations": {
-                "production": {
-                    "fileReplacements": [
-                        {
-                            "replace": "apps/mobile/src/environments/environment.ts",
-                            "with": "apps/mobile/src/environments/environment.prod.ts"
-                        }
-                    ]
-                }
             }
         },
         "serv": {
@@ -29,16 +18,6 @@
                 "outputPath": "dist/apps/mobile",
                 "baseHref": "./",
                 "configFile": "apps/mobile/vite.config.ts"
-            },
-            "configurations": {
-                "production": {
-                    "fileReplacements": [
-                        {
-                            "replace": "apps/mobile/src/environments/environment.ts",
-                            "with": "apps/mobile/src/environments/environment.prod.ts"
-                        }
-                    ]
-                }
             }
         },
         "lint": {

@@ -1,5 +1,5 @@
 {
-  "$schema": "..\\..\\node_modules\\nx\\schemas\\project-schema.json",
+  "$schema": "https://raw.githubusercontent.com/nrwl/nx/master/packages/nx/schemas/project-schema.json",
   "sourceRoot": "apps/server/src",
   "projectType": "application",
   "targets": {
@@ -14,16 +14,9 @@
       },
       "configurations": {
         "production": {
-          "webpackConfig": "apps/server/webpack.config.js",
           "optimization": true,
           "extractLicenses": true,
-          "inspect": false,
-          "fileReplacements": [
-            {
-              "replace": "apps/server/src/environments/environment.ts",
-              "with": "apps/server/src/environments/environment.prod.ts"
-            }
-          ]
+          "inspect": false
         }
       }
     },
@@ -40,13 +33,7 @@
         "production": {
           "optimization": true,
           "extractLicenses": true,
-          "inspect": false,
-          "fileReplacements": [
-            {
-              "replace": "apps/server/src/environments/environment.ts",
-              "with": "apps/server/src/environments/environment.prod.ts"
-            }
-          ]
+          "inspect": false
         }
       }
     },

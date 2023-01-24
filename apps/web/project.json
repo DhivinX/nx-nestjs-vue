@@ -1,5 +1,5 @@
 {
-  "$schema": "..\\..\\node_modules\\nx\\schemas\\project-schema.json",
+  "$schema": "https://raw.githubusercontent.com/nrwl/nx/master/packages/nx/schemas/project-schema.json",
   "sourceRoot": "apps/web/src",
   "projectType": "application",
   "targets": {
@@ -13,14 +13,7 @@
         "configFile": "apps/web/vite.config.ts"
       },
       "configurations": {
-        "production": {
-          "fileReplacements": [
-            {
-              "replace": "apps/web/src/environments/environment.ts",
-              "with": "apps/web/src/environments/environment.prod.ts"
-            }
-          ]
-        }
+        "production": {}
       }
     },
     "serve": {
@@ -31,14 +24,7 @@
         "configFile": "apps/web/vite.config.ts"
       },
       "configurations": {
-        "production": {
-          "fileReplacements": [
-            {
-              "replace": "apps/web/src/environments/environment.ts",
-              "with": "apps/web/src/environments/environment.prod.ts"
-            }
-          ]
-        }
+        "production": {}
       }
     },
     "electron": {
