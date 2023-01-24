@@ -16,8 +16,7 @@
 
     "paths": {
       "@/*": ["./src/*"],
-      "@workspace/shared": ["../../libs/shared/src/index.ts"],
-      "@workspace/utils": ["../../libs/utils/src/index.ts"]
+      "@workspace/shared": ["../../libs/shared/src/index.ts"]
     }
   },
 

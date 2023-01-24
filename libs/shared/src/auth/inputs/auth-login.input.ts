@@ -1,6 +1,6 @@
 import { bool, object, SchemaOf, string } from 'yup';
 import { setLocale } from 'yup';
-import { UseSchema, yupLocale } from '@workspace/utils';
+import { UseSchema, yupLocale } from '@workspace/shared';
 
 setLocale(yupLocale);
 

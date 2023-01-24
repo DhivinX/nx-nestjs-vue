@@ -1,5 +1,5 @@
 import { mixed, object, SchemaOf, setLocale, string } from 'yup';
-import { UseSchema, yupLocale } from '@workspace/utils';
+import { UseSchema, yupLocale } from '@workspace/shared';
 import { Role } from '../../common';
 
 setLocale(yupLocale);

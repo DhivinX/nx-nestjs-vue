@@ -1,14 +1,14 @@
 {
     "name": "mobile",
     "$schema": "https://raw.githubusercontent.com/nrwl/nx/master/packages/nx/schemas/project-schema.json",
-    "sourceRoot": "apps/{projectRoot}/src",
+    "sourceRoot": "apps/mobile/src",
     "projectType": "application",
     "targets": {
         "build": {
             "executor": "@nxext/vite:build",
             "outputs": ["{options.outputPath}"],
             "options": {
-                "outputPath": "dist/apps/{projectRoot}",
+                "outputPath": "dist/apps/mobile",
                 "baseHref": "./",
                 "configFile": "apps/mobile/vite.config.ts"
             }
@@ -16,22 +16,22 @@
         "serv": {
             "executor": "@nxext/vite:dev",
             "options": {
-                "outputPath": "dist/apps/{projectRoot}",
+                "outputPath": "dist/apps/mobile",
                 "baseHref": "./",
-                "configFile": "apps/{projectRoot}/vite.config.ts"
+                "configFile": "apps/mobile/vite.config.ts"
             }
         },
         "lint": {
             "executor": "@nrwl/linter:eslint",
             "outputs": ["{options.outputFile}"],
             "options": {
-                "lintFilePatterns": ["apps/{projectRoot}/**/*.{ts,js,tsx,jsx,vue}"],
+                "lintFilePatterns": ["apps/mobile/**/*.{ts,js,tsx,jsx,vue}"],
                 "fix": true
             }
         },
         "test": {
             "executor": "@nrwl/jest:jest",
-            "outputs": ["coverage/apps/{projectRoot}"],
+            "outputs": ["coverage/apps/mobile"],
             "options": {
                 "jestConfig": "apps/mobile/jest.config.ts",
                 "passWithNoTests": true
