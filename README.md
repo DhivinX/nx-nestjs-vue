@@ -1,4 +1,10 @@
-# NX Workspaces & Vue 3 & NestJS & TypeScript
+<p align="center">
+  <a href="https://vuejs.org/" target="blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Vue.js_Logo_2.svg/2367px-Vue.js_Logo_2.svg.png" width="90" alt="Vue Logo" /></a>
+  <a href="https://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="90" alt="Nest Logo" /></a>
+</p>
+
+# Monorepo starter
+## NX | NestJS | Vue 3 | TypeScript 
 
 ## Description
 
