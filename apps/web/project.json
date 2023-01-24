@@ -19,7 +19,8 @@
     "serve": {
       "executor": "@nrwl/vite:dev-server",
       "options": {
-        "buildTarget": "web:build"
+        "buildTarget": "web:build",
+        "open": true
       }
     },
     "electron": {

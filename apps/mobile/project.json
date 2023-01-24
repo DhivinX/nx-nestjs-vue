@@ -19,7 +19,8 @@
         "serve": {
           "executor": "@nrwl/vite:dev-server",
           "options": {
-            "buildTarget": "mobile:build"
+            "buildTarget": "mobile:build",
+            "open": true
           }
         },
         "lint": {
