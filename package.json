@@ -95,7 +95,6 @@
         "class-validator": "^0.13.2",
         "cookie-parser": "^1.4.6",
         "electron-log": "^4.4.8",
-        "generate-package-json-webpack-plugin": "^2.6.0",
         "helmet": "^6.0.0",
         "jsonwebtoken": "^8.5.1",
         "nest-commander": "^3.3.0",

@@ -48,7 +48,7 @@ const viteConfig = {
             },
         }),
 
-        process.env.VITE_DISABLE_VUE_TSC === 'true'
+        process.env.VITE_DISABLE_VUE_TSC
             ? null
             : checker({
                   vueTsc: true,
