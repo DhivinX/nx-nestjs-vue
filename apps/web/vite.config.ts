@@ -26,7 +26,7 @@ const viteConfig = {
         port: 8080,
 
         fs: {
-            allow: ['../../node_modules'],
+            allow: ['../..'],
         },
     },
 
