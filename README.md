@@ -31,10 +31,10 @@ Suggest to install globally in dev environment:
 ```bash
 
 # 1. Clone the repository
-git clone https://github.com/DhivinX/nx-vnts.git
+git clone https://github.com/DhivinX/nx-nestjs-vue.git
 
 # 2. Enter your newly-cloned folder
-cd nx-vnts
+cd nx-nestjs-vue
 
 # 3. Install the project and build packages in libs folder
 npm install
@@ -173,7 +173,7 @@ More info here: https://vuejs.org/guide/typescript/overview.html#takeover-mode
 
 ## Enhancements and Bug Reports
 
-If you find a bug, or have an enhancement in mind please post [issues](https://github.com/DhivinX/nx-vnts/issues) on GitHub.
+If you find a bug, or have an enhancement in mind please post [issues](https://github.com/DhivinX/nx-nestjs-vue/issues) on GitHub.
 
 ## License
 

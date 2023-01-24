@@ -1,4 +1,4 @@
-app_name: 'NX-VNTS'
+app_name: 'nx-nestjs-vue'
 app_connection_lost: 'Connection to the server has been lost. Connecting...'
 
 yes: 'Yes'

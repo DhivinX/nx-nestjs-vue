@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">nx-vnts</string>
-    <string name="title_activity_main">nx-vnts</string>
+    <string name="app_name">nx-nestjs-vue</string>
+    <string name="title_activity_main">nx-nestjs-vue</string>
     <string name="package_name">com.example.vnts</string>
     <string name="custom_url_scheme">com.example.vnts</string>
 </resources>
