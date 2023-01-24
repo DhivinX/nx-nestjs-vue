@@ -5,21 +5,22 @@
     "projectType": "application",
     "targets": {
         "build": {
-            "executor": "@nxext/vite:build",
+            "executor": "@nrwl/vite:build",
             "outputs": ["{options.outputPath}"],
             "options": {
                 "outputPath": "dist/apps/mobile",
                 "baseHref": "./",
                 "configFile": "apps/mobile/vite.config.ts"
+            },
+            "configurations": {
+              "production": {}
             }
         },
-        "serv": {
-            "executor": "@nxext/vite:dev",
-            "options": {
-                "outputPath": "dist/apps/mobile",
-                "baseHref": "./",
-                "configFile": "apps/mobile/vite.config.ts"
-            }
+        "serve": {
+          "executor": "@nrwl/vite:dev-server",
+          "options": {
+            "buildTarget": "mobile:build"
+          }
         },
         "lint": {
             "executor": "@nrwl/linter:eslint",
