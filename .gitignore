@@ -39,5 +39,4 @@ testem.log
 Thumbs.db
 
 apps/**/config.yaml
-
 apps/**/components.d.ts
