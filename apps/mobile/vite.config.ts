@@ -29,6 +29,7 @@ const viteConfig = {
         },
     },
 
+    cacheDir: '../../node_modules/.vite-mobile',
     clearScreen: true,
     assetsInclude: /\.(pdf|jpg|png|svg)$/,
 

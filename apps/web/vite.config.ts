@@ -30,6 +30,7 @@ const viteConfig = {
         },
     },
 
+    cacheDir: '../../node_modules/.vite-web',
     clearScreen: true,
     assetsInclude: /\.(pdf|jpg|png|svg)$/,
 
