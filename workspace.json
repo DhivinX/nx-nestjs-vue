@@ -2,10 +2,10 @@
     "$schema": "https://raw.githubusercontent.com/nrwl/nx/master/packages/nx/schemas/workspace-schema.json",
     "version": 2,
     "projects": {
-        "mobile": "apps/mobile",
         "server": "apps/server",
+        "web": "apps/web",
+        "mobile": "apps/mobile",
         "shared": "libs/shared",
-        "utils": "libs/utils",
-        "web": "apps/web"
+        "utils": "libs/utils"
     }
 }

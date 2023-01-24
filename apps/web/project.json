@@ -1,12 +1,12 @@
 {
+  "name": "web",
   "$schema": "https://raw.githubusercontent.com/nrwl/nx/master/packages/nx/schemas/project-schema.json",
   "sourceRoot": "apps/web/src",
   "projectType": "application",
   "targets": {
     "build": {
-      "executor": "@nxext/vite:build",
+      "executor": "@nrwl/vite:build",
       "outputs": ["{options.outputPath}"],
-      "defaultConfiguration": "production",
       "options": {
         "outputPath": "dist/apps/web",
         "baseHref": "./",
@@ -17,14 +17,9 @@
       }
     },
     "serve": {
-      "executor": "@nxext/vite:dev",
+      "executor": "@nrwl/vite:dev-server",
       "options": {
-        "outputPath": "dist/apps/web",
-        "baseHref": "./",
-        "configFile": "apps/web/vite.config.ts"
-      },
-      "configurations": {
-        "production": {}
+        "buildTarget": "web:build"
       }
     },
     "electron": {
