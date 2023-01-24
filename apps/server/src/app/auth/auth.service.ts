@@ -1,4 +1,4 @@
-import { AuthLoginDto, AuthLoginResponse } from '@nx-vnts/shared';
+import { AuthLoginDto, AuthLoginResponse } from '@workspace/shared';
 import { ConfigService } from '@nestjs/config';
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { Response, Request } from 'express';

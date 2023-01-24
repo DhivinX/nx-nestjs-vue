@@ -218,7 +218,7 @@ import {
     UserUpdateSelfPasswordDto,
     userUpdateSelfSchema,
     userUpdateSelfPasswordSchema,
-} from '@nx-vnts/shared';
+} from '@workspace/shared';
 
 const accountStore = useAccountStore();
 const $q = useQuasar();

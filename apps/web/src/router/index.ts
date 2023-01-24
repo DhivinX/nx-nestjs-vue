@@ -1,4 +1,4 @@
-import { Role } from '@nx-vnts/shared';
+import { Role } from '@workspace/shared';
 import { createRouter, createWebHistory, createWebHashHistory } from 'vue-router';
 import { AuthMeta, useAuthGuard } from './guards';
 import { routes } from './routes';

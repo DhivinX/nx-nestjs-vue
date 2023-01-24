@@ -16,7 +16,7 @@ import {
     UserUpdateSelfPasswordDto,
     PaginationResponse,
     PaginationDto,
-} from '@nx-vnts/shared';
+} from '@workspace/shared';
 
 @Injectable()
 export class UsersService {

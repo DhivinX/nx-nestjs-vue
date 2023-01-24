@@ -1,5 +1,5 @@
 import { object, SchemaOf, setLocale, number, string, bool } from 'yup';
-import { UseSchema, yupLocale } from '@nx-vnts/utils';
+import { UseSchema, yupLocale } from '@workspace/utils';
 
 setLocale(yupLocale);
 

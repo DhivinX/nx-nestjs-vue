@@ -1,4 +1,4 @@
-import { Role, rolesByImportance } from '@nx-vnts/shared';
+import { Role, rolesByImportance } from '@workspace/shared';
 
 type ConditionOperator = '<' | '>' | '<=' | '>=' | '=';
 

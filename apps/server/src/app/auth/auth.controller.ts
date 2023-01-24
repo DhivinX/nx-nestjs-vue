@@ -1,9 +1,9 @@
-import { AuthLoginDto } from '@nx-vnts/shared';
+import { AuthLoginDto } from '@workspace/shared';
 import { Body, Controller, Post, Req, Res } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { Response, Request } from 'express';
 import { AuthSession } from './decorators/auth-session.decorator';
-import { AuthLoginResponse } from '@nx-vnts/shared';
+import { AuthLoginResponse } from '@workspace/shared';
 import { Session } from '@/app/db/session.entity';
 import { Public } from './decorators/public.decorator';
 

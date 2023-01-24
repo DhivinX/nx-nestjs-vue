@@ -16,8 +16,8 @@
 
     "paths": {
       "@/*": ["./src/*"],
-      "@nx-vnts/shared": ["../../libs/shared/src/index.ts"],
-      "@nx-vnts/utils": ["../../libs/utils/src/index.ts"]
+      "@workspace/shared": ["../../libs/shared/src/index.ts"],
+      "@workspace/utils": ["../../libs/utils/src/index.ts"]
     }
   },
 

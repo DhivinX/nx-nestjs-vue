@@ -1,5 +1,5 @@
 import { AxiosResponse } from 'axios';
-import { timeout } from '@nx-vnts/utils';
+import { timeout } from '@workspace/utils';
 import { $axios } from './client';
 import { ResponseError } from './response-error';
 

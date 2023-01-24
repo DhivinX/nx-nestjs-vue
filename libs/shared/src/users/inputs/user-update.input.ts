@@ -1,5 +1,5 @@
 import { boolean, mixed, SchemaOf, setLocale, string } from 'yup';
-import { UseSchema, yupLocale } from '@nx-vnts/utils';
+import { UseSchema, yupLocale } from '@workspace/utils';
 import { UserUpdateSelfDto, userUpdateSelfSchema } from './user-update-self.input';
 import { Role } from '../../common';
 

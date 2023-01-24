@@ -6,7 +6,7 @@ import {
     UserUpdateDto,
     UserUpdateSelfDto,
     UserUpdateSelfPasswordDto,
-} from '@nx-vnts/shared';
+} from '@workspace/shared';
 
 import { $axios } from '../client';
 

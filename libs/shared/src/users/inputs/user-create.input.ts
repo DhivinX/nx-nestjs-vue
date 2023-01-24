@@ -1,5 +1,5 @@
 import { mixed, object, SchemaOf, setLocale, string } from 'yup';
-import { UseSchema, yupLocale } from '@nx-vnts/utils';
+import { UseSchema, yupLocale } from '@workspace/utils';
 import { Role } from '../../common';
 
 setLocale(yupLocale);

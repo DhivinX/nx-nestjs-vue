@@ -1,5 +1,5 @@
 import { UsersService } from '@/app/users/users.service';
-import { Role } from '@nx-vnts/shared';
+import { Role } from '@workspace/shared';
 import { ConflictException, Injectable } from '@nestjs/common';
 import { Command, Console } from 'nestjs-console';
 

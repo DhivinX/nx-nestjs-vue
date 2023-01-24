@@ -78,7 +78,7 @@
 
 <script setup lang="ts">
 import { api, usePromiseState, ResponseError } from '@/common';
-import { PaginationResponse, UserProfileResponse } from '@nx-vnts/shared';
+import { PaginationResponse, UserProfileResponse } from '@workspace/shared';
 import { ref } from 'vue';
 import { QTableColumn, QTableProps, useQuasar } from 'quasar';
 import UserCreateDialog from '@/app/components/dialogs/UserCreateDialog.vue';

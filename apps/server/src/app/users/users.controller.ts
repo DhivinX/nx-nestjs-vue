@@ -21,7 +21,7 @@ import {
     UserUpdateSelfPasswordDto,
     PaginationResponse,
     PaginationDto,
-} from '@nx-vnts/shared';
+} from '@workspace/shared';
 
 @Controller('/users')
 export class UsersController {

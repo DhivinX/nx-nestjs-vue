@@ -1,6 +1,6 @@
 import { RouteRecordRaw } from 'vue-router';
 import { AuthMeta } from './guards';
-import { Role } from '@nx-vnts/shared';
+import { Role } from '@workspace/shared';
 
 import DefaultLayout from '@/app/layouts/DefaultLayout.vue';
 import AppLayout from '@/app/layouts/AppLayout.vue';
