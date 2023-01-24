@@ -6,11 +6,11 @@
   "main": "dist/apps/web/electron/main/index.js",
   "scripts": {
     "install": "node tools/scripts/patch-nx-dep-graph.js",
-    "apps:dev": "nx run-many --target=serve --all",
+    "apps:dev": "nx run-many --target=serve --projects=web,server",
     "web:dev": "nx serve web",
     "web:electron:dev": "nx electron web",
     "web:electron:build": "nx electron web --configuration=build",
-    "mobile:dev": "nx serv mobile",
+    "mobile:dev": "nx serve mobile",
     "mobile:android": "nx build mobile && nx run mobile:sync:android && nx run mobile:open:android",
     "server:dev": "nx serve server",
     "server:seed": "node tools/scripts/server-seed.js",
