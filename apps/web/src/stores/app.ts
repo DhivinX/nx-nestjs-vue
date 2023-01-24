@@ -7,6 +7,7 @@ import { useRoute } from 'vue-router';
 
 interface State {
     networkError: boolean;
+    isRouteLoading: boolean;
     routeTitle: string;
 }
 
@@ -17,6 +18,7 @@ export const useAppStore = defineStore('app', () => {
 
     const state: State = reactive({
         networkError: false,
+        isRouteLoading: false,
         routeTitle: t(`app_name`),
     });
 

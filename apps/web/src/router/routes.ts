@@ -1,15 +1,10 @@
 import { RouteRecordRaw } from 'vue-router';
-import { AuthMeta } from './guards';
+import { AuthMeta } from './middlewares';
 import { Role } from '@workspace/shared';
 
 import DefaultLayout from '@/app/layouts/DefaultLayout.vue';
 import AppLayout from '@/app/layouts/AppLayout.vue';
 import LoginPage from '@/app/pages/LoginPage.vue';
-import DashboardPage from '@/app/pages/DashboardPage.vue';
-import UsersIndex from '@/app/pages/users/UsersIndex.vue';
-import UserPage from '@/app/pages/users/UserPage.vue';
-import UsersPage from '@/app/pages/users/UsersPage.vue';
-import SettingsPage from '@/app/pages/SettingsPage.vue';
 
 export const routes: RouteRecordRaw[] = [
     {
@@ -33,19 +28,19 @@ export const routes: RouteRecordRaw[] = [
             {
                 path: '/dashboard',
                 name: 'dashboard',
-                component: DashboardPage,
+                component: () => import('@/app/pages/DashboardPage.vue'),
                 meta: {
                     auth: AuthMeta.Required,
                 },
             },
             {
                 path: '/users',
-                component: UsersIndex,
+                component: () => import('@/app/pages/users/UsersIndex.vue'),
                 children: [
                     {
                         path: '',
                         name: 'users',
-                        component: UsersPage,
+                        component: () => import('@/app/pages/users/UsersPage.vue'),
                         meta: {
                             auth: AuthMeta.Required,
                             roles: [Role.Admin],
@@ -54,7 +49,7 @@ export const routes: RouteRecordRaw[] = [
                     {
                         path: ':id',
                         name: 'user',
-                        component: UserPage,
+                        component: () => import('@/app/pages/users/UserPage.vue'),
                         meta: {
                             auth: AuthMeta.Required,
                             roles: [Role.Admin],
@@ -65,7 +60,7 @@ export const routes: RouteRecordRaw[] = [
             {
                 path: '/settings',
                 name: 'settings',
-                component: SettingsPage,
+                component: () => import('@/app/pages/SettingsPage.vue'),
                 meta: {
                     auth: AuthMeta.Required,
                 },
