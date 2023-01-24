@@ -16,8 +16,7 @@ Monorepo template with NX Workspaces, Vue 3, NestJS and TypeScript.
 * Back-end package: [NestJS](https://docs.nestjs.com)
 * Electron for desktop support
 * Capacitor for mobile support
-* Shared package: shared code used in both front-end and backend-end
-* Utils package: shared code used in all packages
+* Shared package: shared code used in all packages
 
 ## Prerequisites
 
