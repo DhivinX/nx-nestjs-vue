@@ -38,6 +38,11 @@ export class AuthService {
             throw new UnauthorizedException('Invalid login data');
         }
 
+        if (oldSession && oldSession.user.id !== user.id) {
+            await this.logout(request, response, oldSession);
+            oldSession = null;
+        }
+
         let maxAge: number = 24 * 60 * 60 * 1000;
         if (authLoginDto.remember) maxAge = 365 * 24 * 60 * 60 * 1000;
 
