@@ -1,23 +1,14 @@
 import path from 'path';
 import { defineConfig } from 'vite';
-import tsconfigBase from '../../tsconfig.base.json';
 import Vue from '@vitejs/plugin-vue';
 import Components from 'unplugin-vue-components/vite';
 import { quasar, transformAssetUrls } from '@quasar/vite-plugin';
 import vueI18n from '@intlify/vite-plugin-vue-i18n';
 import checker from 'vite-plugin-checker';
+import viteTsConfigPaths from 'vite-tsconfig-paths';
 
 const resolve = (p: string) => path.resolve(__dirname, p);
-
-const tsconfigBaseAliases = (rootOffset: string): Record<string, string> => {
-    const paths = tsconfigBase.compilerOptions?.paths || [];
-    const aliases: Record<string, string> = {};
-
-    for (const [name, path] of Object.entries(paths))
-        aliases[name] = resolve(`${rootOffset}/${path}`);
-
-    return aliases;
-};
+const workspaceDir = (p?: string) => resolve(path.resolve('../..', p ? p : '.'));
 
 const viteConfig = {
     server: {
@@ -36,13 +27,16 @@ const viteConfig = {
     resolve: {
         alias: {
             '@/': `${resolve('./src')}/`,
-            ...tsconfigBaseAliases('../..'),
         },
     },
 
     publicDir: resolve('./src/public'),
 
     plugins: [
+        viteTsConfigPaths({
+            root: workspaceDir('tsconfig.base.json'),
+        }),
+
         Vue({
             template: {
                 transformAssetUrls,
