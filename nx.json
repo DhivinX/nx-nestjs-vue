@@ -27,18 +27,5 @@
             }
         ]
     },
-    "defaultProject": "server",
-    "cli": {
-        "defaultCollection": "@nxext/vite"
-    },
-    "generators": {
-        "@nxext/vite": {
-            "application": {
-                "linter": "eslint"
-            },
-            "library": {
-                "linter": "eslint"
-            }
-        }
-    }
+    "defaultProject": "server"
 }
