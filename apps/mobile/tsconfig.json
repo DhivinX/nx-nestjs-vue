@@ -9,6 +9,7 @@
 
     "types": [
       "vite/client",
+      "vitest",
       "@intlify/vite-plugin-vue-i18n/client"
     ],
     
@@ -23,7 +24,7 @@
   "files": [],
 
   "include": [
-    "./components.d.ts",
+    "./src/components.d.ts",
     "**/*.js",
     "**/*.jsx",
     "**/*.ts",

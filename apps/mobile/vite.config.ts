@@ -8,7 +8,6 @@ import checker from 'vite-plugin-checker';
 import viteTsConfigPaths from 'vite-tsconfig-paths';
 
 const resolve = (p: string) => path.resolve(__dirname, p);
-const workspaceDir = (p?: string) => resolve(path.resolve('../..', p ? p : '.'));
 
 const viteConfig = {
     server: {
@@ -34,7 +33,7 @@ const viteConfig = {
 
     plugins: [
         viteTsConfigPaths({
-            root: workspaceDir('tsconfig.base.json'),
+            projects: [resolve('../../tsconfig.base.json')],
         }),
 
         Vue({
@@ -59,9 +58,19 @@ const viteConfig = {
         }),
 
         Components({
+            dts: resolve('./src/components.d.ts'),
             dirs: ['src/app/components'],
         }),
     ],
+
+    test: {
+        globals: true,
+        cache: {
+            dir: '../../node_modules/.vitest',
+        },
+        environment: 'jsdom',
+        include: ['src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
+    },
 };
 
 export default defineConfig(viteConfig);

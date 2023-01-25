@@ -32,12 +32,12 @@
             }
         },
         "test": {
-            "executor": "@nrwl/jest:jest",
-            "outputs": ["coverage/apps/mobile"],
-            "options": {
-                "jestConfig": "apps/mobile/jest.config.ts",
-                "passWithNoTests": true
-            }
+          "executor": "@nrwl/vite:test",
+          "outputs": ["coverage/apps/mobile"],
+          "options": {
+            "passWithNoTests": true,
+            "reportsDirectory": "../../coverage/apps/mobile"
+          }
         },
         "typecheck": {
             "executor": "nx:run-commands",
