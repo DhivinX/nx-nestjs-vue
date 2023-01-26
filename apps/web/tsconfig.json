@@ -10,7 +10,7 @@
     "types": [
       "vite/client",
       "vitest",
-      "@intlify/unplugin-vue-i18n/messages"
+      "@intlify/vite-plugin-vue-i18n/client"
     ],
     
     "baseUrl": ".",

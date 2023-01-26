@@ -7,8 +7,7 @@ declare module '*.vue' {
     export default component;
 }
 
-declare module '@intlify/unplugin-vue-i18n/messages' {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+declare module '@intlify/vite-plugin-vue-i18n/messages' {
     import { LocaleMessages } from '@intlify/core-base';
     import { VueMessageType } from 'vue-i18n';
     const messages: { [x: string]: LocaleMessage<VueMessageType> };

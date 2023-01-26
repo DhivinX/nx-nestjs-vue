@@ -5,7 +5,7 @@ import { defineConfig } from 'vite';
 import Vue from '@vitejs/plugin-vue';
 import Components from 'unplugin-vue-components/vite';
 import { quasar, transformAssetUrls } from '@quasar/vite-plugin';
-import VueI18nPlugin from '@intlify/unplugin-vue-i18n/vite';
+import vueI18n from '@intlify/vite-plugin-vue-i18n';
 import checker from 'vite-plugin-checker';
 import electron from 'vite-plugin-electron';
 import viteTsConfigPaths from 'vite-tsconfig-paths';
@@ -51,7 +51,7 @@ export default defineConfig({
                   vueTsc: true,
               }),
 
-        VueI18nPlugin({
+        vueI18n({
             defaultSFCLang: 'yaml',
             include: resolve('./src/locales/**'),
         }),
