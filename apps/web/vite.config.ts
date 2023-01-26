@@ -96,7 +96,7 @@ export default defineConfig({
     test: {
         globals: true,
         cache: {
-            dir: '../../node_modules/.vitest',
+            dir: '../../node_modules/.vitest-web',
         },
         environment: 'jsdom',
         include: ['src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
