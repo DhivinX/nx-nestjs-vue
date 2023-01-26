@@ -3,7 +3,7 @@ import { pinia } from './stores';
 import router from './router';
 import { Quasar, Notify, Dialog } from 'quasar';
 import { createI18n } from 'vue-i18n';
-import messages from '@intlify/vite-plugin-vue-i18n/messages';
+import messages from '@intlify/unplugin-vue-i18n/messages';
 import { configure as veeConfigure } from 'vee-validate';
 
 import '@quasar/extras/material-icons/material-icons.css';
