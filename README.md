@@ -42,8 +42,8 @@ npm install
 npm run web:dev
 
 # 5. Dev: Run backend with hot reload 
-# Note that you need to create the config.yaml file in the server directory beforehand
-# You can copy the config.example.yaml file and rename it to config.yaml
+# Note that you need to create the .env file in the project root directory beforehand
+# You can copy the .env.example file and rename it to .env
 # Then you can configure database access and other server settings
 npm run server:dev
 
@@ -52,60 +52,47 @@ npm run apps:dev
 
 ```
 
-## Back-end server config example
+## Environment variables
 
-### config.example.json
-Path: `apps/server/src/assets`
+### .env.example
 
-```yaml
-# HTTP / HTTPS server settings
-http:
-  # If you change the server port you have to change it also on the front-end
-  port: 3000 
+```bash
+# Front-end: API server connection configuration
+VITE_WEB_DEFAULT_LOCALE="en"
+VITE_WEB_API_URL="http://localhost"
+VITE_WEB_API_PORT=3000
 
-  # If true it starts the HTTPS server
-  # Note that you need to fill in the credentials fields for the SSL certificate
-  secure: false
+# HTTP / HTTPS server config
+NEST_API_HTTP_PORT=3000
+NEST_API_HTTP_SSL=false
+NEST_API_HTTP_KEY=""
+NEST_API_HTTP_CERT=""
 
-  # If secure option is set to true you must define the paths for the SSL certificate
-  credentials:
-    key: 'PATH_TO_KEY_DIR/key.pem'
-    cert: 'PATH_TO_CERT_DIR/cert.pem'
-
-  # Cross-Origin Resource Sharing domain origins 
-  # More info: https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
-  cors: 
-    - 'http://localhost:8080'
-
-# Database server settings
-# More info: https://typeorm.io
-db:
-  # Database type (postgres, mysql etc.)
-  type: 'postgres' 
-
-  # Database server address
-  host: 'localhost' 
-
-  # Database server port
-  port: 5432
-
-  # Database name
-  database: ''
-
-  # Database username
-  username: ''
-
-  # Database password
-  password: ''
-
-  # Disable this in the production version of the application
-  synchronize: true
+# Cross-Origin Resource Sharing domain origins 
+# More info: https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
+NEST_API_HTTP_CORS=["http://localhost", "http://localhost:8080", "http://localhost:8090", "app://localhost", "capacitor://localhost"]
 
 # Keys required for hashing passwords and tokens
 # They should be filled with random, unique strings
-keys:
-  pwdsalt: ''
-  jwt: ''
+NEST_API_SECRETS_PWDSALT=""
+NEST_API_SECRETS_JWT=""
+
+# Database type: postgres, mysql, sqlite etc.
+# More info: https://typeorm.io
+DATABASE_TYPE="postgres"
+
+# Database connection config
+DATABASE_HOST="localhost"
+DATABASE_PORT=5432
+
+# Database name and user credentials
+DATABASE_NAME=""
+DATABASE_USER=""
+DATABASE_PASSWORD=""
+
+# Disable this in the production version of the application
+# More info: https://typeorm.io/faq#how-do-i-update-a-database-schema
+DATABASE_ENABLE_SYNC=true
 ```
 
 ## Volar and Visual Studio Code (Takeover Mode)
@@ -145,10 +132,11 @@ More info here: https://vuejs.org/guide/typescript/overview.html#takeover-mode
     "editorconfig.editorconfig",
     "syler.sass-indented",
     "eamodio.gitlens",
-    "donjayamanne.githistory",
     "aaron-bond.better-comments",
     "visualstudioexptteam.vscodeintellicode",
-    "pkief.material-icon-theme"
+    "pkief.material-icon-theme",
+    "mikestead.dotenv",
+    "firsttris.vscode-jest-runner"
   ]
 }
 
@@ -165,7 +153,7 @@ More info here: https://vuejs.org/guide/typescript/overview.html#takeover-mode
 ### Optional
 
 * `eamodio.gitlens` - GitLens - Git supercharged.
-* `donjayamanne.githistory` - Git History
+* `mikestead.dotenv` - DotENV - Support for dotenv file syntax
 * `visualstudioexptteam.vscodeintellicode` - IntelliCode
 * `pkief.material-icon-theme` - Material Icon Theme in VS Code
 * `aaron-bond.better-comments` - Better Comments
