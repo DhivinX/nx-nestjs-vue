@@ -10,11 +10,10 @@
     "types": [
       "vite/client",
       "vitest",
-      "@intlify/vite-plugin-vue-i18n/client"
+      "@intlify/unplugin-vue-i18n/messages"
     ],
     
     "baseUrl": ".",
-
     "paths": {
       "@/*": ["./src/*"],
       "@workspace/shared": ["../../libs/shared/src/index.ts"]
