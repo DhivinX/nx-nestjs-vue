@@ -23,7 +23,7 @@ export class JwtStrategy extends PassportStrategy(Strategy, 'jwt') {
     constructor(configService: ConfigService) {
         super({
             jwtFromRequest: tokenExtractor,
-            secretOrKey: configService.get<string>('keys.jwt'),
+            secretOrKey: configService.get<string>('secrets.jwt'),
         });
     }
 

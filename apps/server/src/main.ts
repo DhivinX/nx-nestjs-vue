@@ -21,8 +21,8 @@ async function bootstrap() {
     const port = configService.get<number>('http.port');
     const origins = configService.get<string[]>('http.cors');
     const secure = configService.get<boolean>('http.secure');
-    const keyPath = configService.get<string>('http.credentials.key');
-    const certPath = configService.get<string>('http.credentials.cert');
+    const keyPath = configService.get<string>('http.key');
+    const certPath = configService.get<string>('http.cert');
 
     app.setGlobalPrefix('/api');
 

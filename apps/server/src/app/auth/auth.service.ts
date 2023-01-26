@@ -29,7 +29,7 @@ export class AuthService {
                 email: authLoginDto.email,
                 hash: hashPassword(
                     authLoginDto.password,
-                    this.configService.get<string>('keys.pwdsalt')
+                    this.configService.get<string>('secrets.pwdsalt')
                 ),
             },
         });
@@ -100,7 +100,7 @@ export class AuthService {
             id: token,
         };
 
-        const accessToken: string = sign(payload, this.configService.get<string>('keys.jwt'));
+        const accessToken: string = sign(payload, this.configService.get<string>('secrets.jwt'));
         return accessToken;
     }
 

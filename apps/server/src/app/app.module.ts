@@ -12,7 +12,7 @@ import { AuthModule } from './auth/auth.module';
 @Module({
     imports: [
         ConfigModule.forRoot({
-            load: [config.yaml],
+            load: [config],
             isGlobal: true,
         }),
 

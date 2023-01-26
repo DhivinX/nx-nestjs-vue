@@ -8,11 +8,11 @@ interface Config {
 }
 
 export const config: Config = {
-    defaultLocale: 'en',
+    defaultLocale: import.meta.env.VITE_WEB_DEFAULT_LOCALE ?? 'en',
     useCookies: true,
 
     api: {
-        host: `http://localhost`,
-        port: 3000,
+        host: import.meta.env.VITE_WEB_API_URL ?? 'http://localhost',
+        port: import.meta.env.VITE_WEB_API_PORT ?? 3000,
     },
 };
