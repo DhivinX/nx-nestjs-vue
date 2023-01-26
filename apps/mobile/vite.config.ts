@@ -1,15 +1,17 @@
+/// <reference types="vitest" />
+
 import path from 'path';
 import { defineConfig } from 'vite';
 import Vue from '@vitejs/plugin-vue';
 import Components from 'unplugin-vue-components/vite';
 import { quasar, transformAssetUrls } from '@quasar/vite-plugin';
-import vueI18n from '@intlify/vite-plugin-vue-i18n';
+import VueI18nPlugin from '@intlify/unplugin-vue-i18n/vite';
 import checker from 'vite-plugin-checker';
 import viteTsConfigPaths from 'vite-tsconfig-paths';
 
 const resolve = (p: string) => path.resolve(__dirname, p);
 
-const viteConfig = {
+export default defineConfig({
     server: {
         host: true,
         port: 8090,
@@ -48,7 +50,7 @@ const viteConfig = {
                   vueTsc: true,
               }),
 
-        vueI18n({
+        VueI18nPlugin({
             defaultSFCLang: 'yaml',
             include: resolve('./src/locales/**'),
         }),
@@ -71,6 +73,4 @@ const viteConfig = {
         environment: 'jsdom',
         include: ['src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
     },
-};
-
-export default defineConfig(viteConfig);
+});
