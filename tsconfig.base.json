@@ -15,6 +15,7 @@
         "esModuleInterop": true,
         "skipLibCheck": false,
         "skipDefaultLibCheck": false,
+        
         "strict": true,
         "strictBindCallApply": false,
         "noImplicitReturns": true,
