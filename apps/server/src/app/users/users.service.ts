@@ -23,7 +23,7 @@ export class UsersService {
     constructor(private readonly configService: ConfigService) {}
 
     getProfile(user: User): UserProfileResponse {
-        const { hash, sessions, ...restUser } = user;
+        const { ...restUser } = user;
         const avatar = this.getAvatar(restUser.email);
         return { ...restUser, avatar };
     }
@@ -57,13 +57,13 @@ export class UsersService {
     ): Promise<UserProfileResponse> {
         const oldHash = hashPassword(
             userUpdateSelfPasswordDto.password,
-            this.configService.get<string>('keys.pwdsalt')
+            this.configService.get<string>('secrets.pwdsalt')
         );
 
         if (user.hash === oldHash) {
             user.hash = hashPassword(
                 userUpdateSelfPasswordDto.newPassword,
-                this.configService.get<string>('keys.pwdsalt')
+                this.configService.get<string>('secrets.pwdsalt')
             );
         } else {
             throw new ForbiddenException('Wrong password');
@@ -84,7 +84,7 @@ export class UsersService {
         user.email = userCreateDto.email;
         user.hash = hashPassword(
             userCreateDto.password,
-            this.configService.get<string>('keys.pwdsalt')
+            this.configService.get<string>('secrets.pwdsalt')
         );
         user.firstName = userCreateDto.firstName;
         user.lastName = userCreateDto.lastName;
@@ -158,7 +158,7 @@ export class UsersService {
         if (userUpdateDto.password.length)
             user.hash = hashPassword(
                 userUpdateDto.password,
-                this.configService.get<string>('keys.pwdsalt')
+                this.configService.get<string>('secrets.pwdsalt')
             );
 
         user.isActive = userUpdateDto.isActive;

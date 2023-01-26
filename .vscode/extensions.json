@@ -6,10 +6,10 @@
         "editorconfig.editorconfig",
         "syler.sass-indented",
         "eamodio.gitlens",
-        "donjayamanne.githistory",
         "aaron-bond.better-comments",
         "visualstudioexptteam.vscodeintellicode",
         "pkief.material-icon-theme",
+        "mikestead.dotenv",
         "firsttris.vscode-jest-runner"
     ],
     "unwantedRecommendations": ["octref.vetur"]
