@@ -5,7 +5,6 @@
   "private": true,
   "main": "dist/apps/web/electron/main/index.js",
   "scripts": {
-    "install": "node tools/scripts/patch-nx-dep-graph.js",
     "apps:dev": "nx run-many --target=serve --projects=web,server",
     "web:dev": "nx serve web",
     "web:electron:dev": "nx electron web",
@@ -15,8 +14,10 @@
     "server:dev": "nx serve server",
     "server:seed": "node tools/scripts/server-seed.js",
     "build": "npm run clean && nx run-many --target=lint,build --configuration=production --projects=web,server",
+    "test": "nx run-many --target=test --projects=web,server",
     "clean": "rimraf dist",
-    "lint": "nx run-many --target=lint --all"
+    "lint": "nx run-many --target=lint --all",
+    "dep-graph": "node tools/scripts/patch-nx-dep-graph.js && nx dep-graph"
   },
   "devDependencies": {
     "@capacitor/android": "^4.6.2",

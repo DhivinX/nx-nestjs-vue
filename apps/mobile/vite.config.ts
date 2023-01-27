@@ -21,6 +21,7 @@ export default defineConfig({
         },
     },
 
+    base: './',
     cacheDir: '../../node_modules/.vite-mobile',
     clearScreen: true,
     assetsInclude: /\.(pdf|jpg|png|svg)$/,
