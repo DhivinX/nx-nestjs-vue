@@ -9,7 +9,6 @@
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/apps/web",
-        "baseHref": "./",
         "configFile": "apps/web/vite.config.ts"
       },
       "configurations": {
