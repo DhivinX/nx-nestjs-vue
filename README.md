@@ -120,6 +120,7 @@ More info here: https://vuejs.org/guide/typescript/overview.html#takeover-mode
 * `test` - run tests for all packages
 * `clean` - remove dist directory
 * `lint` - lint all packages
+* `dep-graph` - patch nx dep graph for vue files and open the project graph of the workspace in the browser
 
 ## Visual Studio Code extensions
 
