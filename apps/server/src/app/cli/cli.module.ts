@@ -1,10 +1,9 @@
 import { UsersModule } from '@/app/users/users.module';
 import { Module } from '@nestjs/common';
-import { ConsoleModule } from 'nestjs-console';
-import { CliService } from './cli.service';
+import { SeedCommand } from './seed.command';
 
 @Module({
-    imports: [ConsoleModule, UsersModule],
-    providers: [CliService],
+    imports: [UsersModule],
+    providers: [SeedCommand],
 })
 export class CliModule {}
