@@ -22,6 +22,7 @@ export default defineConfig({
         },
     },
 
+    base: process.env.VITE_IS_ELECTRON_APP ? './' : '/',
     cacheDir: '../../node_modules/.vite-web',
     clearScreen: true,
     assetsInclude: /\.(pdf|jpg|png|svg)$/,

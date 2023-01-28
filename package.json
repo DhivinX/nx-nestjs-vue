@@ -5,7 +5,6 @@
   "private": true,
   "main": "dist/apps/web/electron/main/index.js",
   "scripts": {
-    "install": "node tools/scripts/patch-nx-dep-graph.js",
     "apps:dev": "nx run-many --target=serve --projects=web,server",
     "web:dev": "nx serve web",
     "web:electron:dev": "nx electron web",
@@ -13,10 +12,12 @@
     "mobile:dev": "nx serve mobile",
     "mobile:android": "nx build mobile && nx run mobile:sync:android && nx run mobile:open:android",
     "server:dev": "nx serve server",
-    "server:seed": "node tools/scripts/server-seed.js",
+    "server:seed": "node dist/apps/server/cli.js seed",
     "build": "npm run clean && nx run-many --target=lint,build --configuration=production --projects=web,server",
+    "test": "nx run-many --target=test --all --verbose",
     "clean": "rimraf dist",
-    "lint": "nx run-many --target=lint --all"
+    "lint": "nx run-many --target=lint --all",
+    "dep-graph": "node tools/scripts/patch-nx-dep-graph.js && nx dep-graph"
   },
   "devDependencies": {
     "@capacitor/android": "^4.6.2",
@@ -90,7 +91,6 @@
     "helmet": "^6.0.1",
     "jsonwebtoken": "^9.0.0",
     "nest-commander": "^3.4.0",
-    "nestjs-console": "^8.0.0",
     "passport": "^0.6.0",
     "passport-jwt": "^4.0.1",
     "pg": "^8.8.0",

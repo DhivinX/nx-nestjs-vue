@@ -22,8 +22,8 @@ Monorepo template with NX Workspaces, Vue 3, NestJS and TypeScript.
 
 Suggest to install globally in dev environment:
 
-[nx](https://nx.dev)
-[nest-cli](https://docs.nestjs.com/cli/overview)
+- [nx](https://nx.dev)
+- [nest-cli](https://docs.nestjs.com/cli/overview)
 
 ## Quick start
 
@@ -117,7 +117,8 @@ More info here: https://vuejs.org/guide/typescript/overview.html#takeover-mode
 * `server:dev` - run back-end with hot reload
 * `server:seed` - seed script for server
 * `build` - build all packages
-* `clean` - clean all packages
+* `test` - run tests for all packages
+* `clean` - remove dist directory
 * `lint` - lint all packages
 
 ## Visual Studio Code extensions
