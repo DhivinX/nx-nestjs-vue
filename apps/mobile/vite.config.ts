@@ -52,7 +52,7 @@ export default defineConfig({
               }),
 
         VueI18nPlugin({
-            defaultSFCLang: 'yaml',
+            defaultSFCLang: 'yml',
             include: resolve('./src/locales/**'),
         }),
 
