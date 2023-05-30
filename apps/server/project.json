@@ -5,9 +5,13 @@
   "projectType": "application",
   "targets": {
     "build": {
-      "executor": "@nrwl/node:webpack",
+      "executor": "@nx/webpack:webpack",
       "outputs": ["{options.outputPath}"],
       "options": {
+        "target": "node",
+        "compiler": "tsc",
+        "isolatedConfig": true,
+        "webpackConfig": "apps/server/webpack.config.js",
         "outputPath": "dist/apps/server",
         "main": "apps/server/src/main.ts",
         "tsConfig": "apps/server/tsconfig.app.json",
@@ -15,7 +19,7 @@
         "additionalEntryPoints": [
           {
             "entryName": "cli",
-            "entryPath": "./apps/server/src/cli.ts"
+            "entryPath": "src/cli.ts"
           }
         ]
       },
@@ -28,9 +32,13 @@
       }
     },
     "build-cli": {
-      "executor": "@nrwl/node:webpack",
+      "executor": "@nx/webpack:webpack",
       "outputs": ["{options.outputPath}"],
       "options": {
+        "target": "node",
+        "compiler": "tsc",
+        "isolatedConfig": true,
+        "webpackConfig": "apps/server/webpack.config.js",
         "outputPath": "dist/apps/server-cli",
         "main": "apps/server/src/cli.ts",
         "tsConfig": "apps/server/tsconfig.app.json",
@@ -45,13 +53,13 @@
       }
     },
     "serve": {
-      "executor": "@nrwl/node:node",
+      "executor": "@nx/js:node",
       "options": {
         "buildTarget": "server:build"
       }
     },
     "lint": {
-      "executor": "@nrwl/linter:eslint",
+      "executor": "@nx/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": ["apps/server/**/*.ts"],
@@ -59,7 +67,7 @@
       }
     },
     "test": {
-      "executor": "@nrwl/jest:jest",
+      "executor": "@nx/jest:jest",
       "outputs": ["coverage/apps/server"],
       "options": {
         "jestConfig": "apps/server/jest.config.ts",

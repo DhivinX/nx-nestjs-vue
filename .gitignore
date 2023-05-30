@@ -40,3 +40,4 @@ Thumbs.db
 
 .env
 apps/**/components.d.ts
+apps/**/auto-imports.d.ts
