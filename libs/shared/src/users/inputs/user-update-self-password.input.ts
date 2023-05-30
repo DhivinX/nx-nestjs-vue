@@ -1,9 +1,9 @@
-import { object, ref, SchemaOf, setLocale, string } from 'yup';
+import { object, ref, ObjectSchema, setLocale, string } from 'yup';
 import { UseSchema, yupLocale } from '@workspace/shared';
 
 setLocale(yupLocale);
 
-export const userUpdateSelfPasswordSchema: SchemaOf<UserUpdateSelfPasswordDto> = object().shape({
+export const userUpdateSelfPasswordSchema: ObjectSchema<UserUpdateSelfPasswordDto> = object().shape({
     password: string().required().min(6),
     newPassword: string().required().min(6),
     repeatPassword: string()

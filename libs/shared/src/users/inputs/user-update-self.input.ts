@@ -1,9 +1,9 @@
-import { object, SchemaOf, setLocale, string } from 'yup';
+import { object, ObjectSchema, setLocale, string } from 'yup';
 import { UseSchema, yupLocale } from '@workspace/shared';
 
 setLocale(yupLocale);
 
-export const userUpdateSelfSchema: SchemaOf<UserUpdateSelfDto> = object().shape({
+export const userUpdateSelfSchema: ObjectSchema<UserUpdateSelfDto> = object().shape({
     firstName: string().required().trim(),
     lastName: string().required().trim(),
     position: string().defined().nullable().trim(),

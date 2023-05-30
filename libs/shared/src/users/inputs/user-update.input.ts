@@ -1,18 +1,18 @@
-import { boolean, mixed, SchemaOf, setLocale, string } from 'yup';
+import { boolean, mixed, setLocale, string, ObjectSchema } from 'yup';
 import { UseSchema, yupLocale } from '@workspace/shared';
 import { UserUpdateSelfDto, userUpdateSelfSchema } from './user-update-self.input';
 import { Role } from '../../common';
 
 setLocale(yupLocale);
 
-export const userUpdateSchema: SchemaOf<UserUpdateDto> = userUpdateSelfSchema.shape({
+export const userUpdateSchema: ObjectSchema<UserUpdateDto> = userUpdateSelfSchema.shape({
     password: string().when({
         is: (val: string | null) => val.length && val.length > 0,
-        then: string().min(6),
+        then: (schema) => schema.min(6),
     }),
 
     isActive: boolean().required(),
-    role: mixed().oneOf(Object.values(Role)),
+    role: mixed<Role>().oneOf(Object.values(Role)),
 });
 
 @UseSchema(userUpdateSchema)
