@@ -149,7 +149,6 @@
 import { useAccountStore } from '@/stores/account';
 import { useLogoutAction } from '@/common/hooks';
 import { useI18n } from 'vue-i18n';
-import { useRoute, useRouter } from 'vue-router';
 
 const accountStore = useAccountStore();
 const logoutAction = useLogoutAction();

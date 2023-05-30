@@ -1,9 +1,9 @@
-import { object, SchemaOf, setLocale, number, string, bool } from 'yup';
+import { object, ObjectSchema, setLocale, number, string, bool } from 'yup';
 import { UseSchema, yupLocale } from '@workspace/shared';
 
 setLocale(yupLocale);
 
-export const paginationDtoSchema: SchemaOf<PaginationDto> = object().shape({
+export const paginationDtoSchema: ObjectSchema<PaginationDto> = object().shape({
     page: number().optional().default(1).min(1),
     take: number().optional().default(10).min(1).max(50),
     sortBy: string().optional(),

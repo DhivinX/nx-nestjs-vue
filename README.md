@@ -17,6 +17,7 @@ Monorepo template with NX Workspaces, Vue 3, NestJS and TypeScript.
 * Electron for desktop support
 * Capacitor for mobile support
 * Shared package: shared code used in all packages
+* Docker support
 
 ## Prerequisites
 
@@ -120,6 +121,7 @@ More info here: https://vuejs.org/guide/typescript/overview.html#takeover-mode
 * `test` - run tests for all packages
 * `clean` - remove dist directory
 * `lint` - lint all packages
+* `docker` - re/create docker container
 * `dep-graph` - patch nx dep graph for vue files and open the project graph of the workspace in the browser
 
 ## Visual Studio Code extensions

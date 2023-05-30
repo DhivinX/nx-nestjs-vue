@@ -1,15 +1,15 @@
-import { mixed, object, SchemaOf, setLocale, string } from 'yup';
+import { mixed, object, ObjectSchema, setLocale, string } from 'yup';
 import { UseSchema, yupLocale } from '@workspace/shared';
 import { Role } from '../../common';
 
 setLocale(yupLocale);
 
-export const userCreateSchema: SchemaOf<UserCreateDto> = object().shape({
+export const userCreateSchema: ObjectSchema<UserCreateDto> = object().shape({
     email: string().required().email().lowercase().trim(),
     password: string().required().min(6),
     firstName: string().required().trim(),
     lastName: string().required().trim(),
-    role: mixed().optional().oneOf(Object.values(Role)),
+    role: mixed<Role>().optional().oneOf(Object.values(Role)),
 });
 
 @UseSchema(userCreateSchema)

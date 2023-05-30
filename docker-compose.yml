@@ -1,0 +1,28 @@
+version: '3.8'
+services:
+  app:
+    container_name: app
+    restart: always
+    build: .
+    env_file: .env
+    ports:
+      - ${NEST_API_HTTP_PORT}:${NEST_API_HTTP_PORT}
+    depends_on:
+      - db
+    environment:
+      - DATABASE_HOST=db
+
+  db:
+    container_name: postgres
+    image: postgres
+    ports:
+      - '5433:${DATABASE_PORT}'
+    volumes:
+      - data:/data/db
+    environment:
+      - POSTGRES_DB=${DATABASE_NAME}
+      - POSTGRES_USER=${DATABASE_USER}
+      - POSTGRES_PASSWORD=${DATABASE_PASSWORD}
+
+volumes: 
+  data: {}

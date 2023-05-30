@@ -1,7 +1,6 @@
-import { LocaleObject } from 'yup/lib/locale';
-import { MessageParams } from 'yup/lib/types';
+import { LocaleObject } from 'yup';
 
-function toObject(key: string, values?: MessageParams) {
+function toObject(key: string, values?: any) {
     delete values?.originalValue;
     delete values?.value;
 

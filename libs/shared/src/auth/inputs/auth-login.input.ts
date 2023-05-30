@@ -1,10 +1,10 @@
-import { bool, object, SchemaOf, string } from 'yup';
+import { bool, object, ObjectSchema, string } from 'yup';
 import { setLocale } from 'yup';
 import { UseSchema, yupLocale } from '@workspace/shared';
 
 setLocale(yupLocale);
 
-export const authLoginSchema: SchemaOf<AuthLoginDto> = object().shape({
+export const authLoginSchema: ObjectSchema<AuthLoginDto> = object().shape({
     email: string().required().email().lowercase().trim(),
     password: string().required().min(6),
     remember: bool(),

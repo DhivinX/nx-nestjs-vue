@@ -133,13 +133,10 @@
 </style>
 
 <script setup lang="ts">
-import { computed, reactive } from 'vue';
 import { Form } from 'vee-validate';
 import { usePromiseState, api, ResponseError } from '@/common';
 import { AuthLoginDto, authLoginSchema } from '@workspace/shared';
-import { useRouter } from 'vue-router';
 import { useI18n } from 'vue-i18n';
-import { watch } from 'vue';
 import { useAccountStore } from '@/stores/account';
 import { config } from '@/config';
 
