@@ -1,6 +1,5 @@
 {
 	"appId": "com.example.vnts",
 	"appName": "nx-nestjs-vue",
-	"webDir": "../../dist/apps/mobile",
-	"bundledWebRuntime": false
+	"webDir": "../../dist/apps/mobile"
 }
