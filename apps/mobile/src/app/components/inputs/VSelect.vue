@@ -19,7 +19,6 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
 import { useField } from 'vee-validate';
 import { useI18n } from 'vue-i18n';
 

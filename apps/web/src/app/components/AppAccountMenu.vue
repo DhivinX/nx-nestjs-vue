@@ -62,7 +62,6 @@
 <script setup lang="ts">
 import { useLogoutAction } from '@/common/hooks';
 import { useAccountStore } from '@/stores/account';
-import { useRouter } from 'vue-router';
 
 const router = useRouter();
 

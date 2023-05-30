@@ -10,7 +10,6 @@
 </template>
 
 <script setup lang="ts">
-import { RouterView } from 'vue-router';
 import { useQuasar } from 'quasar';
 import { useAppStore } from '@/stores/app';
 import { useAccountStore } from '@/stores/account';

@@ -58,7 +58,6 @@
 <script setup lang="ts">
 import { Form } from 'vee-validate';
 import { useDialogPluginComponent } from 'quasar';
-import { ref } from 'vue';
 
 defineEmits([...useDialogPluginComponent.emits, 'submit']);
 const { dialogRef, onDialogHide, onDialogOK, onDialogCancel } = useDialogPluginComponent();
