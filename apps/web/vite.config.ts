@@ -4,7 +4,7 @@ import path from 'path';
 import { defineConfig } from 'vite';
 import Vue from '@vitejs/plugin-vue';
 import Components from 'unplugin-vue-components/vite';
-import AutoImport from 'unplugin-auto-import/vite'
+import AutoImport from 'unplugin-auto-import/vite';
 import { quasar, transformAssetUrls } from '@quasar/vite-plugin';
 import VueI18nPlugin from '@intlify/unplugin-vue-i18n/vite';
 import checker from 'vite-plugin-checker';
@@ -64,10 +64,7 @@ export default defineConfig({
 
         AutoImport({
             dts: resolve('./src/auto-imports.d.ts'),
-            imports: [
-                'vue',
-                'vue-router',
-            ],
+            imports: ['vue', 'vue-router'],
         }),
 
         Components({
